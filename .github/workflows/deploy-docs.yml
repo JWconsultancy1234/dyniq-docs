@@ -23,8 +23,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Spell check
+        run: npx cspell "docs/**/*.md" --no-progress
+
       - name: Build
         run: npm run build
+
+      - name: Link check
+        run: npx linkinator ./build --recurse --skip "^(?!https?://docs\\.dyniq\\.ai)" --timeout 10000 --retry true
 
   deploy:
     needs: build
