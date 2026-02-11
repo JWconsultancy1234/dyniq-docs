@@ -1,0 +1,197 @@
+/**
+ * DYNIQ Brand Theme for Docusaurus
+ * Brand source: walker-os/.claude/reference/brand-variables.md
+ *
+ * Colors: Emerald #10B981 primary, dark mode default
+ * Typography: Inter (body), Space Grotesk (headings), JetBrains Mono (code)
+ * Layout: 70/30 dark/light split
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ============================================
+   Light Mode (Infima variables)
+   ============================================ */
+:root {
+  /* Emerald palette */
+  --ifm-color-primary: #10B981;
+  --ifm-color-primary-dark: #059669;
+  --ifm-color-primary-darker: #047857;
+  --ifm-color-primary-darkest: #065F46;
+  --ifm-color-primary-light: #34D399;
+  --ifm-color-primary-lighter: #6EE7B7;
+  --ifm-color-primary-lightest: #A7F3D0;
+
+  /* Typography */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'Space Grotesk', system-ui, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Font sizes */
+  --ifm-code-font-size: 90%;
+  --ifm-font-size-base: 16px;
+
+  /* Light mode backgrounds */
+  --ifm-background-color: #F9FAFB;
+  --ifm-background-surface-color: #FEFEFE;
+
+  /* Light mode text */
+  --ifm-font-color-base: #0F172A;
+  --ifm-font-color-secondary: #4B5563;
+
+  /* Code blocks */
+  --docusaurus-highlighted-code-line-bg: rgba(16, 185, 129, 0.1);
+
+  /* Spacing */
+  --ifm-line-height-base: 1.7;
+}
+
+/* ============================================
+   Dark Mode
+   ============================================ */
+[data-theme='dark'] {
+  /* Emerald palette (slightly brighter for dark mode readability) */
+  --ifm-color-primary: #10B981;
+  --ifm-color-primary-dark: #059669;
+  --ifm-color-primary-darker: #047857;
+  --ifm-color-primary-darkest: #065F46;
+  --ifm-color-primary-light: #34D399;
+  --ifm-color-primary-lighter: #6EE7B7;
+  --ifm-color-primary-lightest: #A7F3D0;
+
+  /* Dark mode backgrounds */
+  --ifm-background-color: #0F1115;
+  --ifm-background-surface-color: #171B21;
+
+  /* Dark mode text */
+  --ifm-font-color-base: #E5E7EB;
+  --ifm-font-color-secondary: #9CA3AF;
+
+  /* Code blocks */
+  --docusaurus-highlighted-code-line-bg: rgba(16, 185, 129, 0.15);
+}
+
+/* ============================================
+   Headings
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 600;
+}
+
+.markdown h1:first-child {
+  font-size: 2.25rem;
+}
+
+/* ============================================
+   Navbar
+   ============================================ */
+.navbar {
+  background-color: #0F1115;
+  border-bottom: 1px solid #1F2937;
+}
+
+.navbar__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: #10B981;
+}
+
+/* ============================================
+   Sidebar
+   ============================================ */
+[data-theme='dark'] .menu {
+  background-color: #0F1115;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-left: 3px solid #10B981;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer--dark {
+  background-color: #0A0C0F;
+  border-top: 1px solid #1F2937;
+}
+
+/* ============================================
+   Code Blocks
+   ============================================ */
+code {
+  font-family: var(--ifm-font-family-monospace);
+  border-radius: 4px;
+}
+
+[data-theme='dark'] .prism-code {
+  background-color: #171B21 !important;
+}
+
+/* ============================================
+   Admonitions (callouts)
+   ============================================ */
+.admonition {
+  border-radius: 8px;
+}
+
+/* ============================================
+   Links
+   ============================================ */
+a {
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: #34D399;
+}
+
+/* ============================================
+   Cards and surfaces
+   ============================================ */
+[data-theme='dark'] .card {
+  background-color: #171B21;
+  border: 1px solid #1F2937;
+}
+
+/* ============================================
+   Table styling
+   ============================================ */
+[data-theme='dark'] table {
+  border-color: #1F2937;
+}
+
+[data-theme='dark'] table thead tr {
+  background-color: #171B21;
+}
+
+[data-theme='dark'] table tr:nth-child(2n) {
+  background-color: rgba(23, 27, 33, 0.5);
+}
+
+/* ============================================
+   Scrollbar (dark mode)
+   ============================================ */
+[data-theme='dark'] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: #0F1115;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 4px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: #4B5563;
+}
