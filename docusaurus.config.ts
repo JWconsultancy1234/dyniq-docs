@@ -37,6 +37,14 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/JWconsultancy1234/dyniq-docs/tree/main/',
+          includeCurrentVersion: true,
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'Next',
+              path: '',
+            },
+          },
         },
         blog: {
           showReadingTime: true,
@@ -93,6 +101,11 @@ const config: Config = {
           sidebarId: 'internalSidebar',
           position: 'left',
           label: 'Internal',
+        },
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownActiveClassDisabled: true,
         },
         {to: '/blog', label: 'Changelog', position: 'left'},
         {
