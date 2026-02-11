@@ -1,0 +1,25 @@
+.heroBanner {
+  padding: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0F1115 0%, #171B21 100%);
+}
+
+[data-theme='light'] .heroBanner {
+  background: linear-gradient(180deg, #F9FAFB 0%, #FEFEFE 100%);
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 3rem 1rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
