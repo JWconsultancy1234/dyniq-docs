@@ -30,7 +30,7 @@ Sprint 3 delivered automated cross-repo documentation sync, contributor workflow
 - `gen-api-docs` step ensures API explorer is always up-to-date
 
 ### Above-Industry UX Optimizations
-- **Homepage rewrite** - "Multi-Agent AI Decision Engine" with stat badges (82 Agents, 28 Endpoints, 5 Tiers, <30s Decisions)
+- **Homepage rewrite** - "Multi-Agent AI Decision Engine" with stat badges (82 Agents, 28 Endpoints, 5 Tiers, under 30s Decisions)
 - **Code copy buttons** enabled globally
 - **Response time table** with Cloudflare timeout warnings in API docs
 - **Version dropdown** labeled "v3.1" (was "Next")
