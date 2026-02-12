@@ -2,6 +2,9 @@
 sidebar_position: 1
 title: Infrastructure
 description: DYNIQ deployment architecture - Contabo VPS, Docker, Caddy, and service networking
+doc_owner: CTO
+review_cycle: 30d
+doc_status: published
 ---
 
 # Infrastructure Overview

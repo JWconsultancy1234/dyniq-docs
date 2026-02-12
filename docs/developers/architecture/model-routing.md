@@ -2,6 +2,9 @@
 sidebar_position: 3
 title: Model Routing
 description: Tier-based LLM model selection optimizing cost vs. capability across the agent hierarchy
+doc_owner: CTO
+review_cycle: 90d
+doc_status: published
 ---
 
 # Model Routing

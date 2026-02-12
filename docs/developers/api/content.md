@@ -2,6 +2,9 @@
 sidebar_position: 4
 title: Content API
 description: AI content creation and human-in-the-loop approval endpoints
+doc_owner: CTO
+review_cycle: 30d
+doc_status: published
 ---
 
 # Content API

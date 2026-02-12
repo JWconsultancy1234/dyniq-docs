@@ -1,0 +1,77 @@
+---
+id: record-t-30-outcome-api-board-meeting-feedback-t-30-post
+title: "Record T30 Outcome"
+description: "Record T+30 outcome for a board meeting decision."
+sidebar_label: "Record T30 Outcome"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlV01z2zYQ/SsYnJIpHatWe+GN/kijiRKrktK0o3g0a3BFIiYBFgBjczT8750FSImS4jTt9NaLDQKLxcPuvrfQljvILI9X/F6DSc9KRCdVxu8inqIVRlZOasVjPkehTcqWP4xHTNdO6BLZRhsGzG9k3UaWopBWavXqk/qkrqAoMGXjEUuhsQw2DmlHb8OcZib43UgFRe/Y701MZuNPijHG7nXaxGw5Ht2G9Tn+WaN17FG6nLncIKRrmUb99oiBSpn2yKFgKTqQhSWfc3S1Ub3bRS0EWsusA1dbvwkyVI6BELUB0bC6SsGh5RHXFRogh5OUxzyAXrvxaN2duYZKrn0k1l0k1hvE9B7EgzertHU84iYgv9Rpw+MtF1o5VI6GUFWFFP6I88+WQr7lVuRYAo0qQwCcREtfuyv7j6ZCHnPrDOUt4k66giaW3ohNUn6cysuDhLnO7pq3Ee9u8zW/qOqS6mTx4erqZrHgEZ8l8+UkmfKIv04m0w/zGx7x5DJ5f337/uaaKqiH0qXtBMjrYdKZ3jCX4644CA4IV0OxNmjrIkRJNbcbHq9O4ZXwNEWVuZzHP49Gozbamai6KHg7gJN4r2wevB6D+pgDVQCZFA3LoapQYUpoCrRWK7suEAxN/Vd4psEvm3Z+jxFNlJVZ7qzn26Z2tdlHyRKwR6kUVZzudjyP61swPgYv7DZ4OY2LFHnHKvYIltWFkyU4LBomtDEoHHvhFeGQQ86AeJAqe0lIe9jrAOLfAb3u5WNJBsc4d6upLkEqH7RLaNBKUOwRKZI9r9kLkh0lJBQRcyhyJQUNd2SnD+sMOMykiFgJ5gHdS962UQ9O339G0TNbGqqK1YCfe0YN8J8I2ckdeoEj7F5xD+WRt4Rgf6IzNfoJW2llg0ZcjEb079Bvp3ib2le/N+bR96sQpKkMYZkN9IhOP41Hf9n+HNY3kPGIdbdnSSVZEKN3nRi97jTTm81IM1t/158uLk5v8xsUMvVY2Y0x2vyTqxwKamgRNJIOS3tqUGhxsPodZSuVwwwNb+/21QLGQDMIzlQHgESN0mbfkvN3aC1kyHfOnjf1wQjkaCMuVVX7gPTLEz/RRly4p4Gbk8xdUSyf3N9WO8UmwO/sBqW+T1HI0POhuA4p+Nphvcmb5XJ24jDUh0VRG+kan5JkNnmLzRuEFA2PV3ekHSW6XFPr7hpxBaTM/BwqeX7w8jnv2/a5G4/43vOCSicUw6H/XQChkm+RriSpOPOwHHEF1E/572fJbHJGBoSXCnK+fwvcPEFZFXjU2/eZ3bXlQfc96o1745M2tV86bhT7lSNh3tczl2qjh+Vz/cf7ya8sIZG3LJlNTsXrZrGkBa9eU1DZLwaqnBX0yqiMJgEiqtNzq6Mry1B1issj/gWNDZ5+fHXxakQYKGkleAp34TxVk2Mcg9fV//3x2uWU2HxeFSC93tTGC14gwoqql0dHPwIi3pOBnIxHxOyc+BOv+HZ7DxY/mKJtafrPGg2x7y7iX8BIuKdaWZH05T0Pt/wBm15XlDvruvcXKOpAnyO9Ji0NOxIhsHLftB1SfHa7WPq7hEd2qVPaY+CRhAseecz9g97551O8DXNbXoDKapLYmAefRFSoKTxDjj94jneDQQcA1QwQ7ukedZegv4P2cGi+3Qb1aNudfVh6dsdOX4I15fSubdu/AM7NwYs=
+sidebar_class_name: "post api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Record T30 Outcome"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/board-meeting/feedback/t30"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Record T+30 outcome for a board meeting decision.
+
+Called 30 days after a decision to record final outcome.
+
+Args:
+    body: T30OutcomeRequest with thread_id, outcome, and optional details
+
+Returns:
+    Success status and agent accuracy updates
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./record-t-30-outcome-api-board-meeting-feedback-t-30-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./record-t-30-outcome-api-board-meeting-feedback-t-30-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,82 @@
+---
+id: get-agent-calibration-api-board-meeting-agent-calibration-agent-name-get
+title: "Get Agent Calibration"
+description: "Get calibration metrics for a specific agent."
+sidebar_label: "Get Agent Calibration"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVlFvIjcQ/ivWSJUSaQkk6j10latEcyiH7nqXJmnVKkFo8A6L7xbbsb1JENr/Xo13F5YAlfrcvgAaz4zH8833DWsImHtIH2Bm0GW9JVFQOodJAhl56ZQNymhI4ZqCkFiomUO2iCUFp6QXc+MECm9JqrmSAnPS4exRP+pbCqXT/mCQ0rIoM6Xz9FH3xOhqJE5Gr5ZkoExcdfxHzhl3Knpirl4p672oLCzETGmtdM6RQ44cZmiDeqbDkfRUYtGTptShjRQn1qklulVTzymn+sUpcuJOGkeiJ6wzlpzw0jgOcGVB0cmY4INDK35694OQRs9VRlqSUDqQe8YitmN0NYrOSotMYa6ND/zoFxUWwlt0nrgS8YKOq/HcrLuAofQiLBz5hSkyL05m6CkTRvMjT2OfcmOyNL75UgzOBu/Y1iRJo0Fcvq+P34vB2fmAz60xro75eWNT2pfzuZKKdJhmGDAVl+J8IKyjTEluX1OsKYM0S/KQALcjdnacQQo5hWlEetpBd4pWTeMUTZspOuDTmDQuaTrNKUACnmTpVFhB+rCG4c34E60+EmbkIH2YVJMELDpcUiDnowvHQgrbRJCA4hG1GBaQgKOnUjnKIA2upAS8XNASIV1DWFmO9IFBhQSCCgUbhpxKfOFUVZVsbqinlKazFvX2oqeS3GrnpjkW/tBVM2MKQg3MpjmWRWiLaq8e13dsJwsqfrIjb4325DnXxWDAX7t8vCulJO/nZSFuG2dIQBodSAd2R2sLJWPX+988x6y39VVVVSXw48XFfuI/sFBZh0T/IivUtAmqrjujgKrgXyrQ0u87FEbunKJefZ1HjHeRYkwaCxMtJwfVpEpaGzqHqw6cn01dIFQJLH3+T8j/St5jTrBJdtw1NkPc82nFc2DL2JAtkGyoEpDhtZPGzL6RDJ00V9zL18CDtueznaeH2Ju6/MZvss2xhahG6HgrPtQQHLqsdfl4f3+zl7CejyWFhWn4DknNrxT6aFV/Z1v0Ixd7HZ7311t6Vh2O3/Go1ODvMn3TMLTqE61api3q46Sl5J+94c24xw5VBGFuuhh8+OvL+DcR2ezF8GYMb5fY7ejung+iTH9GnV87tAtREGYs+UwolnvUmWhmXuSkG+WDBJ7J+TrT+dnF2YAbb40PS4w8aGrkTVkrSmchvS1lvSXV/6v1v71am8FnVejbAlXUrdJF4awp98CsgOTNX7QE9mgHCaSdvThJYGF84ATrNT/6d1dUFZvrDcZKmymPs6Kzw77T6sjue8ai5EqBN9QzOsWBh5McnfWT20bjTsWxp7dCoFfdO9vCOs+LO2DR/lVYNw5DKcmGTujeyuLyN9J2PbrnTpbc564IfY8i1PzorKTdsrZ61NbHn519teu+XtfyVlUb//roaMRGAFtY+NVV9Te4XQHl
+sidebar_class_name: "get api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Agent Calibration"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/board-meeting/agent-calibration/{agent_name}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get calibration metrics for a specific agent.
+
+Returns calibration metrics including:
+- ECE (Expected Calibration Error) - fixed-width binning
+- ACE (Adaptive Calibration Error) - equal-count binning (primary metric)
+- Brier Score - proper scoring rule
+- Bootstrap 95% confidence interval for ECE
+- Bin diagnostics with sparse bin warnings
+
+Status thresholds (based on ACE):
+- good: ACE &lt; 0.05
+- warning: 0.05 &lt; ACE &lt; 0.10
+- poor: ACE > 0.10
+- insufficient_data: &lt; 10 predictions with outcomes
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-agent-calibration-api-board-meeting-agent-calibration-agent-name-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-agent-calibration-api-board-meeting-agent-calibration-agent-name-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-agent-calibration-api-board-meeting-agent-calibration-agent-name-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

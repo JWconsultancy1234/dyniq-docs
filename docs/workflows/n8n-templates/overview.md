@@ -2,6 +2,9 @@
 sidebar_position: 1
 title: n8n Workflow Templates
 description: Pre-built n8n automation workflows for common DYNIQ use cases
+doc_owner: COO
+review_cycle: 60d
+doc_status: published
 ---
 
 # n8n Workflow Templates

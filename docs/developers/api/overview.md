@@ -2,6 +2,9 @@
 sidebar_position: 1
 title: API Reference
 description: DYNIQ agents-api endpoints - board meetings, content, vision, HITL, and more
+doc_owner: CTO
+review_cycle: 30d
+doc_status: published
 ---
 
 # API Reference

@@ -1,0 +1,74 @@
+---
+id: search-similar-items-api-vector-search-post
+title: "Search Similar Items"
+description: "Search for similar items using vector similarity."
+sidebar_label: "Search Similar Items"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdV0tv2zgQ/ivEXLYFFMdJNxfdspvs1mjapLFb7MI1DFoaS2wlUiWpNIah/74YkrLkZ4sc9+IHOS/OfPNxuAbLMwPxFJ4wsUrDLIIUTaJFZYWSEMMYuU5ytlSaGVGKgmsmLJaG1UbIjHm1dkvY1eCL/CI/je7YQ84Nsjcxu5V8UaBhSyFTUmnN5MJYpUXCC5ZiIoxQ0kSsQJ6aiCnNEiUtSusMPqKttTTxF8kYY3fCWKaWOwEZpS2mbLHqRcNe5SLL0Vi2FNrY1wOIQFWoOZ1ulEIMxp1vHlTmztScV2LuTzYP+5UyFiIwmNRkF+LpGq4fRu9w9RZ5ihri6ayZRVBxzUu0qI0TkbxEiGGu8XuNzoKgpH6vUa8gAloWGlOIl7wwGIFJciw5xGuwwhakyh6DakPmg50/VLoioU7f6hojCCmjLV5VhUjcOc+/Girlume90pQFK9DQPx8OOV1V5NNYLWQGEZT8+Q5lZnOIr4bDYQSlkO3Cm2gT48dwnIPIccaZxWcLTQRG1TrBuSVIuDDl6n7pUrXtu4k2K7IuCqDDt+7GzgabOBu7Xv8ShUXtUODFnCv2CgfZIGK/LRTX6bxEtEJm8w3ufntNwRWiFLaXByEtZqh9IkRZlxBf+iT4PxddTHdOdTeY916NaTR1YQ2zimmHZCe55HVhIb5qnMl5h9peCLIuF9sRXPQCGHYBvBeSjTsLe5F4lX5r2FyjyVWR9oMZDq6aJmq9q8VXTOwWUKcBLb16fHad4sv9uAH6tv+wzkqVYuHYpGUOpzaApiG/Gk2lpPGwvBwO6WsHVXWSoDHLumCPQRheDPxQF/rpGn9fQqSH+qI9+SjdO+htucDU8ZzGROmUjW4O4f6YxZPYHvcR7ails3w60KB5IN7RDRNyq1fIaMjn3LXtCbt/ejk2IbnDqcDUNX9L5y7kk0jfxHwczd0WM4nSyIZnF2Q4VSUX8qW8cuO1d535ZZZwi5nSK/Kjapuo8sUEdh/Udz2FdSaWzGqefMMUftaMgiq6Ba4+InYKuZX52V6mRxbLY6l2d6xDimf10DkD6OLjWvNVr36Pobma6PgFc/oGudciE5IXrVNvxsGzloeJugMmSewa/OAwRqNDy8iejn8h0e2V7V0fZb8NI+3Sn9/4Gf/9fnm5T3mfeSFSR2jsVmulX853KVouihN0V6hka/cX0N3mvpkdh8Kd8gFS7UqTnULCezSGZ9jh6rioSwab0G5Dg1VV2/7kNHILhBb73DOzqe4Wh9F08hMEUG58+EGuD4JNiXyFjqfixpfgkLNW5O1k8rBn0OOjRJsrGlvDPFpxGsXgnFfi3APq3AOqN6uOCQy+vNsT6yYlvBLvcNUOp7nfjtrh9Z+z64fRGQlQBASxx24KvX3mZeWvtNDkXZ2277xuPYxZV/tjD00fFMVS9Qt58++H0Ud2naG0hl0/jPa763Y8oQ3XV3dcZn9rXuXuKcEqrWheoAuZy7S9hViGMrwCIIIn1MZbuhhcDoZUPcpvyV0zhTSEcbblw5FrkZ1I1l1j/g8fTgEt1CznVUFXZRNBrR2feCBOCUouoe4xGYXXFXVKToCNp7BeL7jBT7poGloOoJmuIRWGjtu9hb7havvp9MSLmgJwd+kT18IDa0rEk7evsHXQC5PJmaOHTnePLYnJvMZ1kmBlT8rOeh34cD+eQASL8BQjYocYNP9BtMF/UJz01iRtP2vS2hoKLrOaCC4Gb5OaiteUvX4/fnP9GH70+JfLVS/CrjXbdNFnj5y3xddr3+lNs5H3W0c1Nlzgpanks6Zp/gMau5id
+sidebar_class_name: "post api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Search Similar Items"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/vector/search"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Search for similar items using vector similarity.
+
+UIL Phase 3: Enables finding similar historical decisions, leads, or content.
+
+Returns:
+    List of similar items sorted by similarity (highest first).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./search-similar-items-api-vector-search-post.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./search-similar-items-api-vector-search-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./search-similar-items-api-vector-search-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

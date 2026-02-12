@@ -2,6 +2,9 @@
 sidebar_position: 2
 title: Board Meeting Architecture
 description: Multi-agent decision engine with Bayesian calibration, domain-weighted voting, and early termination
+doc_owner: CTO
+review_cycle: 90d
+doc_status: published
 ---
 
 # Board Meeting Architecture

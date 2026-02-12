@@ -1,0 +1,64 @@
+---
+id: list-pending-api-hitl-pending-get
+title: "List Pending"
+description: "List pending HITL items awaiting approval."
+sidebar_label: "List Pending"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v2zgQ/SvEXHph7LRHAXswskUrNCjcxFvsIjEMRhpLbGmSIUdpDUH/fTGk/Nmk7bU+2DLnzfDNzJtRD6SaCMUdtJoMLCXUGKugPWlnoYBrHUl4tLW2jXhfLq6FJtxEob4pTXymvA/uSZnJvb23Hx1hIUorfHB1V3EMKajVUcTWdaYWjx2GraicJbS0atBiUIyKgtSDwXu7dkFEUtTFv16N164CPmn89kpoGwlVLdxaaHuxwY0LW1HriiYgwfkxVFlDAUZHWu38ldcrzm5/0CCBhIDROxsxQtHDm8tL/jlN/rarKoxx3RlxM4JBwsie4cp7o6t07fRLZJ8eYtXiRvGTD0yKdL4h1e3k4dRObUBVr3Sd/mw9QgGRgrYNSCBNhg8WCSTKGgZO4LHDSKsMftnpJuPEgu3DPoFV5bqcxuioLWGD4cjzKiPFVUIOEp507JT5Dc/PCXhw9EbR2oXNz3jOdxjmGFAR1itFP/O4yigxIxgGuYO5hy9Y5Q4/djpgzfI+lPescOf1OEvyiPoJq+WBBY/FPEurJGTcmYy0bQz+OEUTOHBWIajtUWZlEklq1q+blHnWuFadISgun6vFM2SPNP3M0Lv1M3M/gYE/EiJWXdC0heKuh9m8/IDb96hqDFDcLYelhA1S63gU87B5RS0UMFVeT3kWp2NsOIS65cHJs3AacJ+78voDcpU0s2yzWYJVG7b+ezGblxcMYILarl1yHfP++7+P5Scxa9BSFLN5+UPSN29vF2wQvIKulW3eBeVbYXjefHC8CNK+s/Vuf4nD/mLVYIg50uvJm8llEr2LtFFpK4wcU2Xn+9RPGPSHzfLnrN2xM4TfaeqN0pbz7oJJ+y31/I7bBjK/XyTs+r6U0LpIbO/7BxXxn2CGgY8TWZaRhCcVNBNMopK7jrPkvuIWCphVFfo0ssp0WSFnC/lEiu/eLkCC6pjWsai+JlGNDxx9Z7Lbo9gHfcnxev4e5Avwvs9yHYY9Ppte9NgLOqO5lsthGP4H362ivQ==
+sidebar_class_name: "get api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List Pending"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/hitl/pending"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+List pending HITL items awaiting approval.
+
+Note: In production, this should query content_generations table
+for status='pending_review' instead of in-memory dict.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./list-pending-api-hitl-pending-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./list-pending-api-hitl-pending-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

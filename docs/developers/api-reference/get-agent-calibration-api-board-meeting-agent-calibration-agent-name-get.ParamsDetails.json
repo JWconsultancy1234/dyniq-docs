@@ -1,0 +1,1 @@
+{"parameters":[{"name":"agent_name","in":"path","required":true,"schema":{"type":"string","title":"Agent Name"}},{"name":"include_bootstrap","in":"query","required":false,"schema":{"type":"boolean","default":true,"title":"Include Bootstrap"}}]}

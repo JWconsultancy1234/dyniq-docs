@@ -1,0 +1,1 @@
+{"parameters":[{"name":"thread_id","in":"path","required":true,"schema":{"type":"string","title":"Thread Id"}},{"name":"reminder_type","in":"query","required":true,"schema":{"type":"string","title":"Reminder Type"}}]}

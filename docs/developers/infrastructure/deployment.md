@@ -2,6 +2,9 @@
 sidebar_position: 2
 title: Deployment
 description: Deployment procedures for DYNIQ services on Contabo VPS
+doc_owner: CTO
+review_cycle: 30d
+doc_status: published
 ---
 
 # Deployment

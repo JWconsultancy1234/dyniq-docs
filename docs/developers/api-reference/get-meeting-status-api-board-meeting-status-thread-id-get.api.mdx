@@ -1,0 +1,82 @@
+---
+id: get-meeting-status-api-board-meeting-status-thread-id-get
+title: "Get Meeting Status"
+description: "Get current status of a board meeting."
+sidebar_label: "Get Meeting Status"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktvGzcQ/iuDOdkoZbtqctmb4jiOELtVLbVoYQsCvTvaZUyRDMl1Iwj734vh7uphxQFyz0WiOE9+M9+MNhhlGTC7x0crfTFYEUVlSpwLLCjkXrmorMEMrylCXntPJkKIMtYB7BIkJDPozM4ezIP5YD3IsDZ5fxvg5IaeScNvv5wKWCofIuQV5U8BHmX+VHpbmwKiDE/gKdQ6hrMHM6vIwFJq3SpBtK2Ns8pE8ikHSvHuKNbeBIgV9RFbKSiT67pQpswezAAuD7M/cd7mFIIypQD5n1RsuCgoV0FZIyC3K6cpkoCoVmTrKIC8t/6UfU0qGQict6WnEOBElmRi2NrAc4Boo9RJ+dKapSrI5AQ64aCWIJ+l0vJRU/K2zSTFYnnvicUfaq07ZKCQUe7L4WR5BPcpozJ1XpkIb2EA724HF8O3GUzbh5MpEojAls5qzXF74PonnT2Y6ehycDF8k8GVqaTJqeAahNo562MX8bXyoUDryEvunXGBGZYUF12IRYv/Qjq1SM3zUrCIlSdZLFSxWJQUUWCgvPYqrjG73+BoMv5E648kC/KY3c+buUAnvVxRJB+SipErwgy3flCg4h52MlYo0NOXWnkqMIu+JoEhr2glMdtgXDs2DNEzBwRGFTVfzJInGBfYcDhPwVkTKLDN8OKCvw7ZMq1zruiy1nDXKaPA3JpIJrK6dE6rPAF0/jmwzeY4D/v4mXIGQBaFYlWpJ56BjYpjt9n3OfZxgJl625WzK/nIKXiXiPpCANuXAdth0zSNwDfD4fGT/pZaFSlhuGIe/Mh73F7W7DdKpfmkIq3CsYK2+YFUmvUfy1TZwwI1YnvDQ6Ekj828Ef2d9F6u96p4Y9sEsRG4CuX3Cn5LIciScOvsddUEBsxY2nCfuToB0ovH6aIRmMev3yptr3fJWH7lCogjnV3D3ids2vQ7vfnOx65EbYVeh+J9W4JvBetVPs5mkyOHbX+sKFa2ozWKllYZnkunzg+2yHnL6PPNlonNHpun3B5twQ85vQVJOvWJ1j17q1Ysenr/MxhNxgNWaBLwS7uP+/t/fx//CaN2Lo8mY3y50O6upjMWpDF4I0157aWrQDMddqsBpCmg63MoyXRDDQU+kw+tp1/PhmcXDLazIa5k6v0ux2Muvsxjs2PRzx37c8f+0I7taMJz49xpqdJkq30arS0p75lDKF78uRMY+l7MdktyLrCyIbLRZvMoA/3lddPw9ZeaPC/fucBn6RVDmqZxoQKfC8yWUgf6Tmef3HUj7BRey7vnvGHCP0td8y8U+ETrg12eJnzVr/9NJx/lObm4Z3m0kHhxbwfX9dWM12rNGO2Pm6c0brrD3sI5zGo3efr0+HNvGx2qbzbtIGuarX4retViO+pabQZo3jTN/wWsEUc=
+sidebar_class_name: "get api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Meeting Status"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/board-meeting/status/{thread_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get current status of a board meeting.
+
+For async meetings (Level 3+), first checks background task results.
+Then falls back to checkpointer state.
+
+Returns the meeting state including:
+- Current status (processing, awaiting_decision, complete, timeout, error)
+- Phase progress (agents complete vs total)
+- Confidence level if available
+- Processing time if complete
+- Full result data if complete (for async meetings)
+
+Sprint 5 - BM-025: Status endpoint for polling meeting progress.
+SAC-024: Enhanced to support async background task results.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-meeting-status-api-board-meeting-status-thread-id-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-meeting-status-api-board-meeting-status-thread-id-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-meeting-status-api-board-meeting-status-thread-id-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      
