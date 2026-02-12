@@ -31,9 +31,16 @@ This SOP covers backup and restore of the DYNIQ development environment when swi
 | .env files | 34 across all repos | `env-files/` |
 | SSH keys | 5 (Contabo key pair, config, known_hosts) | `ssh/` |
 | Shell configs | .zshrc, .zprofile, .profile, .zsh_history | `shell/` |
-| Git config | .gitconfig, .git-hooks | `git/` |
+| Git config | .gitconfig | `git/` |
+| Global git hooks | pre-commit, pre-push (branch protection) | `git-hooks/` |
+| AWS credentials | config + credentials (BolScout EKS) | `aws/` |
+| Kubernetes config | kubeconfig (BolScout cluster) | `kube/` |
 | Claude Code | settings, history, projects (3,794 files) | `claude/` |
 | Docker | config.json, daemon.json | `docker/` |
+| VS Code | keybindings.json (custom shortcuts) | `vscode/` |
+| Railway | config.json (BolScout deploy) | `railway/` |
+| NVM | default alias (Node v20) | `nvm/` |
+| macOS prefs | Dock + Finder preferences (.plist) | root of archive |
 | App lists | Brewfile, npm, pip, VS Code extensions | `apps/` |
 
 **Auto-synced (no backup needed):**
@@ -89,15 +96,42 @@ mkdir -p ~/Desktop/MIGRATION-BACKUP/ssh
 cp ~/.ssh/config ~/.ssh/id_ed25519* ~/.ssh/known_hosts* ~/Desktop/MIGRATION-BACKUP/ssh/
 ```
 
-### Step 4: Backup configs
+### Step 4: Backup configs + credentials
 
 ```bash
-mkdir -p ~/Desktop/MIGRATION-BACKUP/{shell,git,claude,docker,pyenv}
+mkdir -p ~/Desktop/MIGRATION-BACKUP/{shell,git,git-hooks,claude,docker,aws,kube,nvm,railway,vscode}
+
+# Shell
 cp ~/.zshrc ~/.zprofile ~/.profile ~/.zsh_history ~/Desktop/MIGRATION-BACKUP/shell/ 2>/dev/null
+
+# Git + global hooks
 cp ~/.gitconfig ~/Desktop/MIGRATION-BACKUP/git/
+cp ~/.git-hooks/* ~/Desktop/MIGRATION-BACKUP/git-hooks/ 2>/dev/null
+
+# Claude Code
 cp -r ~/.claude/* ~/Desktop/MIGRATION-BACKUP/claude/ 2>/dev/null
+
+# Docker
 cp ~/.docker/config.json ~/.docker/daemon.json ~/Desktop/MIGRATION-BACKUP/docker/ 2>/dev/null
-cp ~/.pyenv/version ~/Desktop/MIGRATION-BACKUP/pyenv/ 2>/dev/null
+
+# AWS (BolScout EKS access)
+cp ~/.aws/config ~/.aws/credentials ~/Desktop/MIGRATION-BACKUP/aws/ 2>/dev/null
+
+# Kubernetes (BolScout cluster)
+cp ~/.kube/config ~/Desktop/MIGRATION-BACKUP/kube/ 2>/dev/null
+
+# NVM (Node version manager)
+cp ~/.nvm/alias/default ~/Desktop/MIGRATION-BACKUP/nvm/ 2>/dev/null
+
+# Railway (BolScout deploy)
+cp ~/.railway/config.json ~/Desktop/MIGRATION-BACKUP/railway/ 2>/dev/null
+
+# VS Code keybindings
+cp ~/Library/Application\ Support/Code/User/keybindings.json ~/Desktop/MIGRATION-BACKUP/vscode/ 2>/dev/null
+
+# macOS preferences (Dock size, Finder settings)
+defaults export com.apple.dock ~/Desktop/MIGRATION-BACKUP/macos-dock.plist 2>/dev/null
+defaults export com.apple.finder ~/Desktop/MIGRATION-BACKUP/macos-finder.plist 2>/dev/null
 ```
 
 ### Step 5: Export app lists
@@ -113,6 +147,21 @@ node --version > ~/Desktop/MIGRATION-BACKUP/apps/node-version.txt
 python3 --version >> ~/Desktop/MIGRATION-BACKUP/apps/python-version.txt
 pyenv versions >> ~/Desktop/MIGRATION-BACKUP/apps/python-version.txt
 ~/.bun/bin/bun --version > ~/Desktop/MIGRATION-BACKUP/apps/bun-version.txt 2>/dev/null
+```
+
+### Step 5b: Check Downloads folder
+
+:::warning Downloads is NOT synced by iCloud
+The `~/Downloads/` folder (10GB, 69 PDFs/docs) is NOT included in iCloud Desktop & Documents sync. Review and move important files:
+:::
+
+```bash
+# Check what's there
+ls ~/Downloads/*.pdf ~/Downloads/*.xlsx ~/Downloads/*.docx 2>/dev/null | wc -l
+du -sh ~/Downloads/
+
+# Move anything important to Desktop (which IS synced)
+# or add to MIGRATION-BACKUP manually
 ```
 
 ### Step 6: Export browser bookmarks
@@ -230,26 +279,47 @@ chmod 644 ~/.ssh/*.pub ~/.ssh/config ~/.ssh/known_hosts*
 ssh contabo echo "SSH OK"
 ```
 
-### Phase 5: Restore Shell + Git Config (1 min)
+### Phase 5: Restore Shell + Git + macOS Prefs (2 min)
 
 ```bash
+# Shell
 cp ~/Desktop/MIGRATION-BACKUP/shell/.zshrc ~/.zshrc
 cp ~/Desktop/MIGRATION-BACKUP/shell/.zprofile ~/.zprofile 2>/dev/null
+
+# Git config + global hooks
 cp ~/Desktop/MIGRATION-BACKUP/git/.gitconfig ~/.gitconfig
+mkdir -p ~/.git-hooks
+cp ~/Desktop/MIGRATION-BACKUP/git-hooks/* ~/.git-hooks/ 2>/dev/null
+git config --global core.hooksPath ~/.git-hooks
+
+# VS Code keybindings
+mkdir -p ~/Library/Application\ Support/Code/User
+cp ~/Desktop/MIGRATION-BACKUP/vscode/keybindings.json \
+  ~/Library/Application\ Support/Code/User/keybindings.json 2>/dev/null
+
+# macOS Dock + Finder preferences
+defaults import com.apple.dock ~/Desktop/MIGRATION-BACKUP/macos-dock.plist 2>/dev/null
+defaults import com.apple.finder ~/Desktop/MIGRATION-BACKUP/macos-finder.plist 2>/dev/null
+killall Dock Finder 2>/dev/null  # Restart to apply
+
 source ~/.zshrc
 ```
 
 ### Phase 6: Install Dev Runtimes (10 min)
 
 ```bash
-# All Homebrew packages (gh, pnpm, pyenv, postgresql, livekit-cli, etc.)
+# All Homebrew packages (gh, pnpm, pyenv, postgresql, livekit-cli, supabase, etc.)
 brew bundle --file=~/Desktop/MIGRATION-BACKUP/apps/Brewfile
 
-# Node.js (v22)
-brew install node
+# NVM + Node.js v20 (BolScout uses v20)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+source ~/.zshrc
+nvm install 20
+nvm alias default 20
 
 # Python via pyenv
 pyenv install 3.12.1
+pyenv install 3.12.3
 pyenv global 3.12.1
 
 # Bun
@@ -263,6 +333,28 @@ cat ~/Desktop/MIGRATION-BACKUP/apps/vscode-extensions.txt | xargs -L 1 code --in
 
 # GitHub CLI auth
 gh auth login
+```
+
+### Phase 6b: Restore Cloud Credentials (2 min)
+
+```bash
+# AWS (BolScout EKS access)
+mkdir -p ~/.aws
+cp ~/Desktop/MIGRATION-BACKUP/aws/* ~/.aws/
+chmod 600 ~/.aws/credentials
+
+# Kubernetes (BolScout cluster)
+mkdir -p ~/.kube
+cp ~/Desktop/MIGRATION-BACKUP/kube/config ~/.kube/config
+chmod 600 ~/.kube/config
+
+# Railway (BolScout deploy)
+mkdir -p ~/.railway
+cp ~/Desktop/MIGRATION-BACKUP/railway/config.json ~/.railway/
+
+# Verify
+aws sts get-caller-identity 2>/dev/null && echo "AWS: OK"
+kubectl get nodes 2>/dev/null && echo "K8s: OK"
 ```
 
 ### Phase 7: Clone Repos (5 min)
