@@ -145,7 +145,20 @@
     "Werkgebied",
     "strategie",
     "Bereken",
-    "nummer"
+    "nummer",
+    "fajr",
+    "TIMEBLOCK",
+    "timeblock",
+    "functools",
+    "getenv",
+    "pooler",
+    "Schnell",
+    "schnell",
+    "Kling",
+    "Hailuo",
+    "Vapi",
+    "Mbps",
+    "silero"
   ],
   "ignorePaths": [
     "node_modules",
