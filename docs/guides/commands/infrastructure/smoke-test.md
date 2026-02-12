@@ -1,6 +1,6 @@
 ---
 description: "Quick smoke test for deployed services before major operations"
-argument-hint: [service] (optional - agents-api, ruben-api, n8n, langfuse)
+argument-hint: "[service] (optional - agents-api, ruben-api, n8n, langfuse)"
 ---
 
 # Smoke Test

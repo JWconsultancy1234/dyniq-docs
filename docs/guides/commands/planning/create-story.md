@@ -1,6 +1,6 @@
 ---
 description: "Create user story from epic or PRD"
-argument-hint: [epic-name] [story-title]
+argument-hint: "[epic-name] [story-title]"
 ---
 
 # Create Story: $ARGUMENTS

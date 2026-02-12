@@ -1,6 +1,6 @@
 ---
 description: Enhance a single Linear issue with missing documentation sections
-argument-hint: [DYN-X or issue UUID]
+argument-hint: "[DYN-X or issue UUID]"
 ---
 
 # Linear Enrich: $ARGUMENTS

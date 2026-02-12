@@ -1,6 +1,6 @@
 ---
 description: "Auto-sync EPIC changes to PRIORITY-MASTER-LIST"
-argument-hint: [epic-name]
+argument-hint: "[epic-name]"
 ---
 
 # Sync EPIC to Master: $ARGUMENTS

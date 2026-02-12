@@ -1,6 +1,6 @@
 ---
 description: "Fast-track fix for trivial tasks (bugs, typos, small tweaks)"
-argument-hint: [description]
+argument-hint: "[description]"
 ---
 
 # Quick Fix: $ARGUMENTS

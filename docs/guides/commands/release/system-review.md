@@ -1,6 +1,6 @@
 ---
 description: "Analyze implementation against plan for process improvements"
-argument-hint: [plan-path] [execution-report-path]
+argument-hint: "[plan-path] [execution-report-path]"
 ---
 
 # System Review

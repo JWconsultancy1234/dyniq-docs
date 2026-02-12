@@ -1,6 +1,6 @@
 ---
 description: Create an Epic (large initiative spanning 2-6 months)
-argument-hint: [epic-name]
+argument-hint: "[epic-name]"
 ---
 
 # Create Epic: $ARGUMENTS

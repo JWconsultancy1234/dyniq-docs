@@ -1,6 +1,6 @@
 ---
 description: "Quick infrastructure state check before planning"
-argument-hint: [keyword] (optional - filter by feature keyword)
+argument-hint: "[keyword] (optional - filter by feature keyword)"
 ---
 
 # Verify Infrastructure

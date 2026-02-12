@@ -1,6 +1,6 @@
 ---
 description: Board meeting decision to Linear initiative + projects + issues
-argument-hint: [board-meeting-id or topic]
+argument-hint: "[board-meeting-id or topic]"
 ---
 
 # Linear Setup: $ARGUMENTS

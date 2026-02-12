@@ -1,6 +1,6 @@
 ---
 description: "Generate implementation report for system review (auto-detects changes)"
-argument-hint: [feature-name]
+argument-hint: "[feature-name]"
 ---
 
 # Execution Report: $ARGUMENTS

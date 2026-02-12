@@ -1,6 +1,6 @@
 ---
 description: "Systematic context gathering for multi-repo or complex work"
-argument-hint: [project-name]
+argument-hint: "[project-name]"
 ---
 
 # Context Gather: $ARGUMENTS

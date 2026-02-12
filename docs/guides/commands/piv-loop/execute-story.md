@@ -1,6 +1,6 @@
 ---
 description: "Self-learning story execution with automatic post-execution cleanup"
-argument-hint: [story-or-plan-file] [--parallel PLAN-2.md PLAN-3.md]
+argument-hint: "[story-or-plan-file] [--parallel PLAN-2.md PLAN-3.md]"
 ---
 
 # Execute Story: Complete Self-Learning Loop

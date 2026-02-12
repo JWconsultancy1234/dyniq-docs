@@ -1,6 +1,6 @@
 ---
 description: Execute a development plan with systematic task tracking
-argument-hint: [plan-file-path]
+argument-hint: "[plan-file-path]"
 ---
 
 # Execute Development Plan

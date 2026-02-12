@@ -1,6 +1,6 @@
 ---
 description: "Full autonomous planning cycle: Board Meeting → EPIC → PRDs → Stories → Sprint → Plans (NO EXECUTE)"
-argument-hint: [topic] [--level=0-5] [--agents=3|8|24|48|63|100+]
+argument-hint: "[topic] [--level=0-5] [--agents=3|8|24|48|63|100+]"
 ---
 
 # Full Planning Cycle: $ARGUMENTS

@@ -1,6 +1,6 @@
 ---
 description: "Create feature plan with complexity-based depth (Quick/Standard/Deep)"
-argument-hint: [feature-name] [--level=0|1|2]
+argument-hint: "[feature-name] [--level=0|1|2]"
 ---
 
 # Plan Feature: $ARGUMENTS

@@ -1,6 +1,6 @@
 ---
 description: "Parallel C-Suite agent review for EPICs and strategic documents"
-argument-hint: [epic-path]
+argument-hint: "[epic-path]"
 ---
 
 # C-Suite Review: $ARGUMENTS
