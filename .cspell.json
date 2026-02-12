@@ -158,7 +158,11 @@
     "Hailuo",
     "Vapi",
     "Mbps",
-    "silero"
+    "silero",
+    "checkpointer",
+    "Checkpointer",
+    "langgraph",
+    "timestamptz"
   ],
   "ignorePaths": [
     "node_modules",
