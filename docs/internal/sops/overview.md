@@ -22,6 +22,7 @@ This section is for DYNIQ team members, VAs, and contractors.
 | [Creating Pydantic AI Agents](./creating-agents) | Developers | 60 days |
 | [Deployment Guide](./deployment) | Developers, DevOps | 30 days |
 | [n8n Workflow Debugging](./n8n-debugging) | Developers | 60 days |
+| [MacBook Migration & Restore](./macbook-migration) | Walker, DevOps | 90 days |
 
 ## SOP Standards
 
