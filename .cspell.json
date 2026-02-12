@@ -126,7 +126,11 @@
     "fullchain",
     "privkey",
     "dzsu",
-    "frontmatter"
+    "frontmatter",
+    "asyncio",
+    "hotfixes",
+    "Delegatable",
+    "upsell"
   ],
   "ignorePaths": [
     "node_modules",
@@ -140,13 +144,7 @@
     "docs/developers/reference/**",
     "docs/developers/voice-ai/**",
     "docs/guides/commands/**",
-    "docs/internal/sops/SOP-*",
-    "docs/internal/sops/n8n-*",
-    "docs/internal/sops/voiceflow-*",
-    "docs/internal/sops/webhook-*",
-    "docs/internal/sops/post-*",
-    "docs/internal/sops/self-*",
-    "docs/internal/sops/dyniq-*"
+    "docs/internal/sops/**"
   ],
   "flagWords": [],
   "enableGlobDot": false
