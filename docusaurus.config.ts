@@ -106,7 +106,8 @@ const config: Config = {
       title: 'DYNIQ',
       logo: {
         alt: 'DYNIQ Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
+        height: 32,
       },
       items: [
         {
