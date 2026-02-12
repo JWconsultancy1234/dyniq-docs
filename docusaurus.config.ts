@@ -175,6 +175,7 @@ const config: Config = {
           title: 'More',
           items: [
             {label: 'Changelog', to: '/blog'},
+            {label: 'Contributing', href: 'https://github.com/JWconsultancy1234/dyniq-docs/blob/main/CONTRIBUTING.md'},
             {label: 'GitHub', href: 'https://github.com/JWconsultancy1234/dyniq-docs'},
           ],
         },
