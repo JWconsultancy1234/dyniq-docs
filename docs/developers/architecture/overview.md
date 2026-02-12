@@ -2,6 +2,9 @@
 sidebar_position: 1
 title: Architecture Overview
 description: DYNIQ platform architecture - 82-agent swarm, C-Suite hierarchy, and board meeting system
+doc_owner: CTO
+review_cycle: 90d
+doc_status: published
 ---
 
 # Architecture Overview

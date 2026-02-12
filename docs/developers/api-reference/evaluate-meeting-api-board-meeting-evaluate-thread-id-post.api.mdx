@@ -1,0 +1,76 @@
+---
+id: evaluate-meeting-api-board-meeting-evaluate-thread-id-post
+title: "Evaluate Meeting"
+description: "Run LLM-as-Judge evaluation on a completed board meeting."
+sidebar_label: "Evaluate Meeting"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVd9vGzcM/lcEPm2AHKfBgG335i7B6jVp3dgrVjiGoejos5o7SZF0QY2D/veBuh+247rA3veSnEmK+vSRH9lAEIWHbAmPRrh8VCEGpQtYccjRS6dsUEZDBve1Zre3dyPhR3/VeYEMX0RZC/Iyo5lg0lS2xIA5S5lYl+niQT/ouTQOPQtb7M0sR6l8d9ih8EaT9bkWpQo7zvBF5aglstqLAvmDdso/MeE9el+hDpxJ4wPDzUZJhVruOBM6Zw6lqSrUeQtMlsKpsEsYrr98GL25/DVjN3vgAStbioC997eMTepgKkHPCE4VBbre93vG7rFw6BNqUaJLRHEwFl1KN80hg44WXHcPXQur1omRwTKErMPWocjXKl+vrfEBOHiUNUGGbNnAZDZ9j7t3KHJ0kC1XccXBCicqDOh8CtGiQshgSAQcFJXLirAFDg6fa+Uwhyy4Gjl4ucVKQNZA2Fk66INrXxFUKMmwSJnYNIdI1zn01miPns5cXV7Sv+PGmNdSovebumT3XTBwkEYH1IHChbWlkomh8VdPZ5pTHObxK0oiQOS5olBRzhwxGxTd3aLvMfb39KVEdtd11cQq9ja1X28ZQtjwMsZmRHaMMXL45erq9E2fRam6Frpxzrj/8iB7AJvyBqFK+lIBK38aUBp55BV693GTSntcocgHi9IBC3QQV5H3NuGc2B2U8da0ACFyqHzxo4rfoSeNwZDsfGgigy3IG6nRbJ0I6d3TZIgcZPj2vdr2cX8Ql9+oAvwkZt+xy8RNC7+LW+1z7EvUVug8FddtCb53WR/ybrGYnSRs+6PCsDUk7E6gSVgZjIVV46OROe5lPW4GNcYDRc+pQ9qaH+t64ElY9R53vYK3rZv3Ev9nNJlNRxQQE/cbc0j99ZcP009sUqAOnk1mUziZ3zfzBTnYxjh2K3TxpxN2y0qShHWGJExyoSHatTorUHeTDTi8oPNtpjcXVxeXxDcxUonU/h3G13p8jaLZy+j/hXJ2oXTtQBIZ21KoJOLapSnStt+SegX4q53Nh+UDHLL9Slhx2FLzZktomkfh8W9Xxkjm5xodrZoVhxfhlHikXlo2kCtP3zlkG1F6/EEVf7rv9PozO4e8725NrU0A6RdweMLd0eZK42zbL7um80+kRBsOTp5MX1pTg0pnH+cL2iI10XSorKekrO7jYLwew9qLrMdHfw9m73F407SajXGIb11nTwyqbqOJoVWM8V/tN0ou
+sidebar_class_name: "post api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Evaluate Meeting"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/board-meeting/evaluate/{thread_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Run LLM-as-Judge evaluation on a completed board meeting.
+
+Scores the meeting decision on reasoning quality, evidence usage,
+risk assessment, cost efficiency, and recommendation clarity.
+
+DYN-107: Evaluation template
+DYN-108: Automated trigger
+DYN-109: Regression alerting
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./evaluate-meeting-api-board-meeting-evaluate-thread-id-post.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./evaluate-meeting-api-board-meeting-evaluate-thread-id-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./evaluate-meeting-api-board-meeting-evaluate-thread-id-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

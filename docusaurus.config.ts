@@ -28,7 +28,35 @@ const config: Config = {
     mermaid: true,
   },
 
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: [
+    '@docusaurus/theme-mermaid',
+    'docusaurus-theme-openapi-docs',
+    ['@easyops-cn/docusaurus-search-local', {
+      hashed: true,
+      language: ['en'],
+      highlightSearchTermsOnTargetPage: true,
+      explicitSearchResultPath: true,
+    }],
+  ],
+
+  plugins: [
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'agents-api',
+        docsPluginId: 'classic',
+        config: {
+          agentsApi: {
+            specPath: 'static/openapi.json',
+            outputDir: 'docs/developers/api-reference',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+        },
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -36,7 +64,10 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          docItemComponent: '@theme/ApiItem',
           editUrl: 'https://github.com/JWconsultancy1234/dyniq-docs/tree/main/',
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
           includeCurrentVersion: true,
           lastVersion: 'current',
           versions: {
@@ -101,6 +132,12 @@ const config: Config = {
           sidebarId: 'internalSidebar',
           position: 'left',
           label: 'Internal',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'apiReferenceSidebar',
+          position: 'left',
+          label: 'API Explorer',
         },
         {
           type: 'docsVersionDropdown',

@@ -1,0 +1,64 @@
+---
+id: get-pending-feedback-api-board-meeting-pending-feedback-get
+title: "Get Pending Feedback"
+description: "Get board meetings pending T+7 or T+30 feedback."
+sidebar_label: "Get Pending Feedback"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVk2P2zYQ/SvEXJdrO8lhC9/cONkaKdpt7AAtvIZBi2OJWYlUyNG2gqH/Xoy+LNm7ORdFfLAN8nHem5nHjxOQigPMt3BwyuvbDJGMjWEnQWOIvMnJOAtzuEcSNUS0kCBytNrYWGxu7oTzYnPzbiaOiPqgoqfJo320n5EKb4NITSDhjueVlCgSFlH3eCmC84RaHEpR+BhtVE4e7ZfQjNifrCAnAlotNphi7FUmPGbGavRhAhJcjl6x1JWGOcRI+1bdvmPYq9zs6wz2rY5rSIwEEjyG3NmAAeYneDub8c+4GOsiijCEY5GKzy0YJETOElpiuMrz1ES1oOnXwGtOEKIEM8X/cs9yyTQM5EilnZZ6oMwR5mAsYYweJJChlEc2jBQPLZI7dFRFSjCfVRLobq8L5PWGMAsv8CQeld4bPeAI5JtQPUUNEisNlwb4edh8QS1uCUztchN9N2oNuIy4xMgE47i1PF1JiNDtdTtal9GWvx9hvr2MXMl+xBZpCtXuzPUenegiX1FuEhS6p2UX/q2CyJRGpu99EEhREb6X0ccWKtYN9Iro5k4sC+z3xbKoGbQqwz4YG+Eoz1c7vlRlEGvGv55TjaljChqmd86MW9QwuMNXjBqPfyuMR807/2yMrpXXpXhZ+qDsrSu7uqwIsyuli/EJ0h8g/aEBZ6XKe1UOLXTX1ZDezX44/YfT/79O74r4QjKvaBhcQmMd3UR9Bb8kRNRbaAIVfyQEjApvqKyduHhYfcLyF1QaPcy3O/ZehpS49ooFCbmiBOYwVbmZjh4Q05botiOCc/A1X4TNTh1T9PZQufmEXBPDSSTNtASrMp7983bxsLplAEs29ujqpZ2R/vpt9YdYxGgpiMXD6romH9YbnhBH58Wvysb3XuWJSHmX597xxc4VUlaL9kYXMdr2eQESntE3boY3k7eTGXcyd4EyVRu81cjPpbZJ4uO5BCMlp/OL4b/+vGr7QvgPTfNUGctZFz6tz97aA1tuGsiLZ6SEKx/sJCQuEK84nQ4q4BefVhUPfyvQs/N2Ep6VN+rA/dzuKtk5gE35hCXvryjCnA34rNKicczFg2tk1vsPG5CgChY6NNlTbbL2z+DwVbYcxD77Tbb0/D04mcfw06mxb1X1+Gbq1RW9wRs0V3dXVdW/9fT82w==
+sidebar_class_name: "get api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Pending Feedback"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/board-meeting/pending-feedback"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get board meetings pending T+7 or T+30 feedback.
+
+Returns list of meetings that need feedback, sorted by urgency.
+Used by n8n to send Telegram reminders.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-pending-feedback-api-board-meeting-pending-feedback-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-pending-feedback-api-board-meeting-pending-feedback-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

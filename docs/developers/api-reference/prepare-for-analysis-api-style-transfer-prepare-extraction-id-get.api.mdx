@@ -1,0 +1,75 @@
+---
+id: prepare-for-analysis-api-style-transfer-prepare-extraction-id-get
+title: "Prepare For Analysis"
+description: "Get StyleInput for passing to style analysis."
+sidebar_label: "Prepare For Analysis"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktv20YQ/iuLOTUALTlGTwR6UGvXEfKoastBA8sgVuSI2oTa3cwubTMC/3sxS1IirchN3WsveuzOa7/55rEFL3MH8S04XxV44klqt0KCuwgydCkp65XREMMlenHNMlNtSy9WhoSVzimdC29E0BZSy6Jyyo0WeqHna+UE6swapb2whFYSOoGPnmTqMROZ9DLY8WsUr09PT2SO2gv3IGkzWugbh8KzjSWuDKFIZVGwt7G0arw0krKTDaJXOh8Hv99QPCi/FhmmyimjE19Z/GUBKaH06h4XEML6YDzG4ndD4v3HWdR4IPQlaRcCcd4QZl2YyugQ52ihp1pYMlkZDlvFB1MWmfhaIlVBmUWX0uEIIjAWSbLsNIMY2vcnK0NJB1MirUoCckmHe9LJJfsAEpUlSY4eInCYlqR8BfHtFiaz6Vus3qDMkCC+vavvIrCS5AY9kgsiWm4QYhjYgggUJ9RKv4YICL+WijCD2FOJEbh0jRsJ8RYYP4jBeVI6hwi88gUfXOyhmWZQ19HOj9JZ6TxVnYsAzMDHShZu4ETq6o9ViHXojq22J7osCuDHdQFMOzc1nxI6a7RDx+bOTk/5a0jd6zJN0blVWYirVhgiSI32qH0IwtpCpSFZ48+Odba9EC1xKr1qPAyx/HGYIiipeE7+hgqWav8el5uH7/pJfR6XP++J1REsSerspcj/GpTrCFLpMTdUvdTQb51+HYHayByTkoqAr/K4cYfvYWSaA0kkq977pqwublidjXXc+O/c2nk0y8+Y+gGPbw9qirPbmRnmpsO8h9rg0b2ge4Hse22Ps094vW/HbdvIQj/d99JdQ4a65gf9fHZ2WB4fZaGyQH5xQWTo5bWRoZeqGGRxKFCYdHD7AxlS2mOOBPXdcQq8M02ATICNy5+rhvfonMxxz6dnCpjBEHO+DcSyZQBkzxQ+4Frwjz0zO7LsqM5YPvp/JBRj04TfyvXIsE9Rk6HjUJw3Kfies07kzXw+OzDY8GODfm14XDXjJoyIGMLEHe4H45Zw4+2gDurejLpmkjRpH06qHVTSqre4Gxbr5jrqhslfJ5PZ9IQF6gD/yvTRP//0YfqnmDDLnZjMpgfFcXVxPeeLUBHvpM4vSdq1KFBmPMd5IPA2IXUmWraLHHU7siGCeyTXWHo9OhudMuTWOL+RoQLaGGcNCmGdmLS19jSS7b6a/l+i/u0S1TKFC2hsC6l0b5A27LxlGjHthvtr1G1cEEE87NV3EayN86y63bKjGyrqmo+bfYXbUaacXBa9jeULVsMF514WJYcWpse9JMXy39c9Soefrtr6fyWOvbUrFT3w2cUzfFhoketuH9y2MpM0Ret72gcdnV+wq/zLizlEIEvGtl+pX0Kltj96HXsY2b5ouxD5s9fOh+LbbdMD6non31wd1dh1iS4h/Oq6/hsUqW43
+sidebar_class_name: "get api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Prepare For Analysis"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/style-transfer/prepare/{extraction_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get StyleInput for passing to style analysis.
+
+This endpoint prepares extracted data for the 100-agent swarm.
+Use this before calling /api/board-meeting/analyze with decision_type="creative".
+
+Note: For MVP, this returns the stored extraction data.
+In production, this would query the database.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./prepare-for-analysis-api-style-transfer-prepare-extraction-id-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./prepare-for-analysis-api-style-transfer-prepare-extraction-id-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./prepare-for-analysis-api-style-transfer-prepare-extraction-id-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

@@ -2,6 +2,9 @@
 sidebar_position: 6
 title: Vision API
 description: UI-to-code generation converting screenshots and descriptions into React components
+doc_owner: CTO
+review_cycle: 30d
+doc_status: published
 ---
 
 # Vision API

@@ -2,6 +2,9 @@
 sidebar_position: 1
 title: Runbooks
 description: Operational runbooks for DYNIQ infrastructure management
+doc_owner: COO
+review_cycle: 30d
+doc_status: published
 ---
 
 # Runbooks

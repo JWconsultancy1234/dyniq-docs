@@ -2,6 +2,9 @@
 sidebar_position: 2
 title: Authentication
 description: API key authentication and rate limiting for the DYNIQ Agents API
+doc_owner: CTO
+review_cycle: 30d
+doc_status: published
 ---
 
 # Authentication

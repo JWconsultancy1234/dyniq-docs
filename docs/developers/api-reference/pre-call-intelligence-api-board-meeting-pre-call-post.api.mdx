@@ -1,0 +1,77 @@
+---
+id: pre-call-intelligence-api-board-meeting-pre-call-post
+title: "Pre Call Intelligence"
+description: "Generate pre-call intelligence playbook for Ruben voice agent."
+sidebar_label: "Pre Call Intelligence"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVt1v2zYQ/1cIvqwFlMTNhmHQW9oGrdEvN0mHFa5hnMWzzIYmGZJKohr634cjJUu2k6x72dNeEpl3vC/+7ne34QFKz/MpXxhw4miNGKQu+SzjAn3hpA3SaJ7zN6jRQUBmHR4VoBSTOqBSskRdILMK6oUx12xpHLuoFqjZrZEFMihRh+Nv+pu+qLRnwJQsV+EO6S97j7eo2IhF36z1zUCDqr30LBhmnRFVgd90AHVNQmukDj5jZvEdC4qNrUALhc5nDLRgxqImvZUx1z5GA0whiBjC668fj16MRjmbdEmgFtFiJ3uRM/2HjrmVDqL9Z6SIgonKkeHfR57dgQxsgUvjkJH0eXf9NGfn2slihZROAAEB+pJ0Wr/mbNLV66YCJUPNfGHIPM+4sZg8jwXPuXU4JxfzYbnnYOU8Fm3eFm2+1bPGB55xhzcV+vDSiJrnG14YHVAH+gRrlSyih5Pvnh53w32xwjXQl3XkP0j09IsqN9ewRvoRaos85z60gQYZFB28RxDsIyntg4Ykv3gWDTQZl1pUPrj6KWPjTucRW50N9gyPy+OMKWNEKTGgyxgqvA5OFhL1c/J3U8kfcypsDB90/WnJ8+nWd3xkdLzJtke6Uoo3sz6cz5X8wS6jif2AoihaZyNCFXm0IPU8QXTXpQy49od5N1l3AM5B/WQoE5CaTZLt/VjGAnWQS4mCUQhtl5D5yhFi6gcLsA3icadf2uv7DttzpmIHL51ZM6o2b/qMUoe2UJQOBbFMD6gBHIZJOnwFSl0k9B64bc9jSz1MRFvyeNY2+/Nj3lBUfRTBVRgPvDXaJ6Cfjkb0b9fbZVUU6P2yUuyiVebZz7cSCCFJBGoyaCryflijLv/ODzEUo0qw8TC7MyvZy0iWH1qy3OpNqO+bmOpvp6eHyfwJSorEaOfOGfdvMtklBYEBpKKvLar3WMMUO9KfAN62F2f7LTHgGZMCJFivffkUi3xA76HEvr8eV43FYFckjRRlq1iQno/ooMl4Ee4HZg4e7hXV8j78cwOYgqfwW70B+PsnSi/0eClepyd4yFmn8vbqanJgMOHDY1E5Ger4JGeT8Tus3yIIdDyfzqj71xhWJk6fNEwshBXP+QlYebKzJ5x0Tch7q5cEmwSEXdvb4oGV77CODMBzvkrijKc5w/86OpuMj0iBYiUwXvSz7Pwe1lbh3mzqX7UfMf3ZcAyM9jh62qnNBlQ5YGepl2YIh9dfP44/szNaajw7m4wPGer88ooEkaLegy7fOLCruILQMkN8knYcwdr2Y2Vareh+xm/R+WTpxfHpcRoqxoc1xJZs032QHPZDGQz9/7e3/2x7ayFOXHBiFUidhnCky9RGU8I/z/YW7oxvW2mW8RX1XT7lm80CPH5xqmno+KZCgvZ0lvFbcBIWhMkpUeaq698Nv8a64yMdjiKxkbqqUuvt8TxxcLpxVhRow5O6Q2qYfLq8ilmkBXNtBN1xcEeEB3c853GXpduRC+LZhivQZUXUnPNkk5ocKirMkB+uIz+0H4PJAboeRNhTRdYmQX8HY2VXfbNJzNM0W/0kevTGlpuSNr3mrGmavwFUlo6s
+sidebar_class_name: "post api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Pre Call Intelligence"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/board-meeting/pre-call"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generate pre-call intelligence playbook for Ruben voice agent.
+
+Runs a lightweight Level 0 board meeting analysis to produce
+talking points, objection handlers, and opening hooks for a lead.
+
+DYN-100: Pre-call endpoint
+DYN-101: n8n integration (called during 60s wait before call)
+DYN-102: Enriched metadata for Ruben
+DYN-103: Playbook quality scoring
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./pre-call-intelligence-api-board-meeting-pre-call-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./pre-call-intelligence-api-board-meeting-pre-call-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

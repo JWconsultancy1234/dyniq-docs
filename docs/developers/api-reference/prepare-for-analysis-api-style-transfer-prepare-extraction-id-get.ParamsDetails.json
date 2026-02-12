@@ -1,0 +1,1 @@
+{"parameters":[{"name":"extraction_id","in":"path","required":true,"schema":{"type":"string","title":"Extraction Id"}},{"name":"industry","in":"query","required":false,"schema":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Industry"}}]}

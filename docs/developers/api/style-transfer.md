@@ -2,6 +2,9 @@
 sidebar_position: 5
 title: Style Transfer API
 description: Brand voice extraction, analysis, and content generation pipeline
+doc_owner: CTO
+review_cycle: 30d
+doc_status: published
 ---
 
 # Style Transfer API

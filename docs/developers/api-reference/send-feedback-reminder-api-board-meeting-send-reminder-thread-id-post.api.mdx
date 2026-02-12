@@ -1,0 +1,75 @@
+---
+id: send-feedback-reminder-api-board-meeting-send-reminder-thread-id-post
+title: "Send Feedback Reminder"
+description: "Send a feedback reminder via Telegram."
+sidebar_label: "Send Feedback Reminder"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVU1v4zYQ/SvEnFqAidO0QAvd3GbbGLvbdRO1aGEbAi2NJW4kkktSyRoC/3sx1IftOFmgRU+92AL5OPM4896wAy9KB8kKtlrY4qJB9FKVsOFQoMutNF5qBQncoyqYYDvEYivyB2axkapAyx6lYCnWWFrRXK7VWs1t6ZK1YowxX1kURSaLhKUVspiCDSmGTba46bFjwMzvDSZsDf77NTBt6evbqzVQ6NTKskTrmPpBsSdtH3a1fmJeM0fsRhasQedEiexJ+ordLtJ3bNt6r5W7BA7aoBV0qUUBCdDBbLxUNnEQRmaRbTawzSJw2s+mm2WZ0c4DB4d5a6XfQ7LqYL5cvMX9LYoCLSSrTdhwMMKKBj1aFyFKNAgJTIGAg6RCG+Er4GDxUystFpB42yIHl1fYCEg6oPoQc2+pURy89DUtpEM9CwiBT/FPyjrm+NSi3f+rJHdj21MCBLqXRWe0cujo3PXVFf09006b5+jcrq3Z3QAGDrlWHpUnuDCmlnnsyuyjozPdORe9/Yg5VVoUhSSoqJeWuukl5e5vcODZ52FRtz+Pqp3oz41kP0Y5vh/kGIHTPpuqydiSGhxCCBy+u74+v94fopZFJM/eWKvtP7mbOboBxfVC1vQlPTbuHFDr/GRXqP2HXZTTacNIAMOKVB5LtBA2gY9rwlqxP+rqO90ThMChceWXBPC+9xZMwV6HxmIMQiHhmTYWZNxexIXAIfefX2rziPuJavmZOsDPMAcBr2JtevoDbnOIcWhR36HXS3HTt+ClZCPkNk2XZwF7fTToK01zZRgK0cwJzISRs5MBO6N5cjGac9ZNYyAcjZJ7kknf+NOBMhVLGPkW96Otq36bj97/82K+XFwQIMQG7PRx/W/++nXxG5uXqLxj8+UCno/8uzf3KW2wnbbsnVDlL1aYitXkC2M1WZqMI1TBBr2zEtUwXYHDI1rXR/rm8vryiopOZWlE9MDA8WV/PufSHRz1/3mJhh6SuGemFjLar7XR/71wVtRg4M/eZg4n4gEOyeEV2XCoSHvJCrpuKxz+busQaLkf+jQrCunEtibX7ETt8Au1/upuMNjX7DXCD7h/4Zl5FHVLWKAX4lFYSQn/++SjDdT+OOdI6lCVOPyq8Tnuhv15nqPxRyfPZjWxnzy9/HCf0vPTUmuOLfgQLTh8HA3jU1oHN4786PdoUp/Cu643dwgTvt969cRk/x5NFdqEEP4GJ5xguA==
+sidebar_class_name: "post api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Send Feedback Reminder"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/board-meeting/send-reminder/{thread_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Send a feedback reminder via Telegram.
+
+Args:
+    thread_id: The board meeting thread ID
+    reminder_type: "t7" or "t30"
+
+Triggers n8n workflow to send Telegram message with HITL buttons.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./send-feedback-reminder-api-board-meeting-send-reminder-thread-id-post.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./send-feedback-reminder-api-board-meeting-send-reminder-thread-id-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./send-feedback-reminder-api-board-meeting-send-reminder-thread-id-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

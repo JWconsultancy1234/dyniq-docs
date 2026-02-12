@@ -1,0 +1,77 @@
+---
+id: record-t-7-feedback-api-board-meeting-feedback-t-7-post
+title: "Record T7 Feedback"
+description: "Record T+7 feedback for a board meeting decision."
+sidebar_label: "Record T7 Feedback"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVk1v4zYQ/SvEXHqoErtBAQO6FN5N2jU23XUTt2jhGMZYGsvcSKSWpDYxDP33Ykh92W7SxQI99ZLI5MzjcN6bGR7AYWYhXsJGo0kvCiInVQarCFKyiZGlk1pBDHeUaJOKxfcTsSVKN5g8iq02AoV3FI2jSCmRVmp1+aAe1FvMc0rFRKS4twK3jtihNRFOi2RHyaOQWyHdd1Y4g8kjozxRnnuEqcls/KCEEGKj030sFpOfm+Pv6HNF1okn6XbC7QxhupZpJLRae5xIoEqF9hfAXCjtyDLkHbnKqBb1vkoSslZYh66y3qUqU3SUCuOvDBHokgwyzCyFGMLy2k3WbSLWWMq1T8O6SUO/5SbrUlsHEZgQ7xud7iE+QKKVI+X4E8syl4k/YfTJcroPYJMdFchfpeHznSTLv7qL+h/7kiAG6wxzFoGTLueFhTcSMw7+mMY3R2S5xu4a6gjavA2AN1rnhGqA/FGJhTc6BZ5Z4XY04HZI5U+M7wnw11X7j1uIl+fxF/h8SypzO4ivxuNxHXUmqspzqFd9IB882mkUc6Mzw3SGw+o6agH05hMlLQ3SUMqa75M5uP7gkDOxnR3YipBLgWvD6/lCqq5ILqHmKPpTnanIL9hSKxsycjUe879j6EaZ2yoXd40xRN8qGxvAXuW2OdDfcYtV7rpg/zvRFWQtZvSaLF5Twa+N+9cTPXDuue2ye0pu2BBbo4u+7ZFKSy2Vs57bOoIfr67O6fsDc5l6csSNMdp8O3cpOZQ5f0lHhT03yHVytPsVmZTKUUYG6lWfOTQG9wNCb3UI0PNks9e473howV429ckQC96tI5CqrHxC2u2ZX6gjSNzzAKZjtbV7y7l8dv/KPOcmhN/YDQTQUxQYejkV14GCfzqsNXm3WMzPAIM+LCWVkW7vKZnOZ+9p/44wJQPxcsVyLsjtNM+WZlSUyC0QRljK0dFcHrUiHLkJ9MD3rJyghWP4Ln9YyvfEN5KszV3YjkBhwbt/Xkznsws24HBZj3f9sLp5xqLM6WT49MT2c4O7Rdfne9GBVFs95Pj6rw+z38Q0I+WsmM5n54V3c7/gDd9Wb1FlvxgsdyLnvlEazV2KOwkP66amREaqGdIQwRcyNiD9cHl1OeYYOLMF+jprLt2+aCaibQSncQyG9P/6/dNoiOttVOYofUeojG9JQapLFhhEJ4/ICLZ9Zt2ES2/HAo+XcDhs0NLvJq9rXv5ckeHyWEXwBY3EDetkyb1p1xbKAR5p3xa+che+g7B5XgWBnzRUbnbBY5okVLpXbYc1OP94v/BXCe+0QqfsY/CJOws+QQz+ScjevuL82gFyVFnlRxkETC4lrDg7wyp89FXYfAxaNKr9IMK+IKPmEvx30L+PzQ+HUN913dmHrRc9ug4QrJnSVV3XfwP5LSOP
+sidebar_class_name: "post api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Record T7 Feedback"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/board-meeting/feedback/t7"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Record T+7 feedback for a board meeting decision.
+
+Called 7 days after a decision to check if it's tracking well.
+
+Args:
+    body: T7FeedbackRequest with thread_id, on_track, and optional notes
+
+Returns:
+    Success status and updated record
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./record-t-7-feedback-api-board-meeting-feedback-t-7-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./record-t-7-feedback-api-board-meeting-feedback-t-7-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

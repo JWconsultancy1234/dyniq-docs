@@ -1,0 +1,78 @@
+---
+id: get-calibration-report-api-board-meeting-calibration-report-get
+title: "Get Calibration Report"
+description: "Get calibration report for all agents."
+sidebar_label: "Get Calibration Report"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVk1v20YQ/SuLOcUAbTlGTwR6UB3XEZKmrq0WLWxBGJFDahNyl5kdOhEE9rcXw6Ukyh+HXnrqRRJ23z4O37w3qy0IlgHSe1h55Py0JhLrSlgkkFPI2DZivYMUrklMhpVdMeqKYWo8iyk8G6wqgyU5CWcP7sHdkrTswhG6JmGbhSfwxATPQrlZbUwQlDaYN988BzGF5SAnPd3MZVWbUzChrWvkiLRBbBbSB3dqLn3rZMxQep9PviE768pJ4z1PrAttUdjMkpNljoInenD6SIwlmenllcGMfTiUTPlQoRbwyQulxsYylivvJQhj8+PPWAXSB+dUYFtFLRriwnONLqMzc0dixJs5t/TgdDfzrrA5uYyMdUL8iFUwbzDPg/n7bdDD8bknZ5CAbyiqN8shhZJkOVJ0GfVfYmOXfeeWQ+deApUkkECgrGUrG0jvtzC9mX2gzXvCnBjS+0W3SKBBxpqEOPQQhzVBCs9eHBKw6oivLfEGEmD62lqmHNJCFUkgZGuqEdItyKZRipX3FaED9VQv1R4qVipFDE02P+0f0mlFTKHxLlBQsovzc/06tuVdm2UUQtFW5nYAQwKZd0JOFI5NU9msl2PyOeiZ7aHAruu6BH64uHhO/AdWNo/mvWL2/C9YoWHtndhYd06CttJfVqgOzwGVz4520W1+LfoWDPoFYc1kl+xX1D0lMXSLLtmtITNqP3aafvSxQOgSqEM56sfAd4D+QiFgSbAnex3ai2HmutupEZq2F+TQSF3oEsjk+4jGrz5TJiOaS9Xyu0B3qH+PORjqvtcmlj/gFgeOQ4tih16X4l1swUsP20Hez+c3zwijP2qStR8yCBoTWUMKE2zs5GhoTkbRO43RG8XuTu0RG34cvr1I2NgPtNnFax23k10O/zyd3sxOFdD1whd+rPu7vz7NfjPTfmiZ6c0Mns7v26u7uW70U+ojuvKasVmbijA3DXsNkXWlQZebweemJDdMIEjgkThEprdnF2fnKnbjg9TYe3+oUS+Jy9HYv92JcFTL9pCk/6+V//xaGcym6Zs0Fdp+PrTcD6ho7Xt1IiRP/hEk8IK9FwmsfRA9s92uMNDvXHWdLsfbQYdYbgOuqtH98IU2r9wrj1i1Whzo8H9Etnqwv56SXR6UMRJMs4waGZ16NpSVZR/e66s5JICtvuE4cl/6yA0/RkMX3WbEfUjfrn79HE3kY/h2G8PcdXt83Hr1xD7uO3V0tnfdP1DxXrk=
+sidebar_class_name: "get api-method"
+info_path: docs/developers/api-reference/dyniq-agents-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Calibration Report"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/board-meeting/calibration-report"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get calibration report for all agents.
+
+Returns calibration metrics for all agents, sorted by status (worst first).
+
+Includes summary statistics:
+- Count by status (good/warning/poor/insufficient_data)
+- Average ACE across calibrated agents
+
+Note: include_bootstrap=False by default for performance. Set to True
+for confidence intervals (adds ~1s per agent).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-calibration-report-api-board-meeting-calibration-report-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-calibration-report-api-board-meeting-calibration-report-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-calibration-report-api-board-meeting-calibration-report-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

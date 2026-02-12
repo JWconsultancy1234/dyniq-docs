@@ -2,6 +2,9 @@
 sidebar_position: 1
 title: Getting Started
 description: Quick start guide for integrating with the DYNIQ platform
+doc_owner: COO
+review_cycle: 60d
+doc_status: published
 ---
 
 # Getting Started with DYNIQ
@@ -44,6 +47,35 @@ curl -X POST https://agents-api.dyniq.ai/api/board-meeting/analyze \
   }'
 ```
 
-:::info Content Coming Soon
-Full integration guides with step-by-step tutorials are being developed for Sprint 2.
-:::
+## Lead Funnel Flow
+
+The complete lead journey from quiz to booked appointment:
+
+```mermaid
+flowchart TD
+    A[Website Visitor] -->|Fills out| B[Groei-Scan Quiz]
+    B -->|Webhook| C[n8n Pipeline]
+    C --> D{Qualify Lead}
+    D -->|HOT| E[Tavily Research]
+    D -->|WARM| F[Nurture Sequence]
+    D -->|COLD| G[Archive]
+    E --> H[Generate Sales Briefing]
+    H --> I[Ruben Calls Lead]
+    I --> J{Call Outcome}
+    J -->|Interested| K[Book Appointment]
+    J -->|Not Ready| F
+    J -->|No Answer| L[Retry Queue]
+    K --> M[WhatsApp Notification]
+    M --> N[Strategy Call]
+
+    style A fill:#10B981,color:#fff
+    style K fill:#10B981,color:#fff
+    style N fill:#10B981,color:#fff
+```
+
+## Next Steps
+
+- [Internal Integration Guide](/docs/guides/integration/internal-setup) - API access, webhooks, environment setup
+- [Board Meeting Guide](/docs/guides/board-meeting) - Run multi-agent strategic decisions
+- [API Reference](/docs/developers/api/overview) - Full endpoint documentation
+- [Architecture Overview](/docs/developers/architecture/overview) - System design and agent hierarchy

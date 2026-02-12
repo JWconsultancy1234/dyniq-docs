@@ -2,6 +2,9 @@
 sidebar_position: 3
 title: Board Meeting API
 description: Multi-agent decision analysis endpoints with async support for large swarms
+doc_owner: CTO
+review_cycle: 30d
+doc_status: published
 ---
 
 # Board Meeting API
