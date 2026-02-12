@@ -1,148 +1,205 @@
 ---
-sidebar_position: 6
-title: n8n Workflow Debugging
-description: SOP for debugging and modifying n8n automation workflows
-doc_owner: CTO
-review_cycle: 60d
-doc_status: published
+title: "SOP: n8n Workflow Debugging"
+sidebar_label: "SOP: n8n Workflow Debugging"
+owner: walker
+last_review: 2026-02-12
+classification: internal
+tags: [sops, auto-synced]
 ---
 
-# n8n Workflow Debugging
+# SOP: n8n Workflow Debugging
 
-Systematic approach to debugging n8n workflows in the DYNIQ automation stack.
+**Created:** 2026-01-19
 
-## Quick Reference
+---
 
-| Property | Value |
-|----------|-------|
-| URL | https://automation.dyniq.ai |
-| Container | `n8n-n8n-1` |
-| Network | `n8n_default` |
-| Health | `/healthz` |
+## Pre-Debug Checklist (Do This FIRST)
 
-## Key Workflow IDs
+Before diving into code, verify basics:
 
-| Workflow | ID |
-|----------|-----|
-| Quiz -> Ruben Call | `tGtoHKGRgykshaf7` |
-| Voiceflow Lead | `DP0wfYBh8SJK33Ue` |
-| HITL Content Review | `Vkhmtd3Uy32VaXeK` |
-| Board Meeting Review | `AdbE5UmMQJKY28PD` |
-
-## Debugging Steps
-
-### Step 1: Identify the Failing Execution
+### 1. Check Workflow Status (2 min)
 
 ```bash
-N8N_KEY="your-key"
+N8N_KEY=$(grep N8N_API_KEY /path/to/.env | cut -d'=' -f2 | tr -d '"')
+WORKFLOW_ID="your-workflow-id"
 
-# List recent executions
-curl -s "https://automation.dyniq.ai/api/v1/executions?limit=5" \
+# Is workflow active?
+curl -s "https://automation.dyniq.ai/api/v1/workflows/$WORKFLOW_ID" \
+  -H "X-N8N-API-KEY: $N8N_KEY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(f'Active: {d.get(\"active\")}')"
+```
+
+### 2. Check Recent Executions (2 min)
+
+```bash
+curl -s "https://automation.dyniq.ai/api/v1/executions?workflowId=$WORKFLOW_ID&limit=3" \
   -H "X-N8N-API-KEY: $N8N_KEY" | python3 -m json.tool
 ```
 
-### Step 2: Get Execution Details
+### 3. Time-Box Investigation
 
-```bash
-# Get failed execution with data
-curl -s "https://automation.dyniq.ai/api/v1/executions/{id}?includeData=true" \
-  -H "X-N8N-API-KEY: $N8N_KEY" | python3 -c "
-import sys, json
-data = json.load(sys.stdin)
-error = data.get('data', {}).get('resultData', {}).get('error', {})
-print(json.dumps(error, indent=2))
-"
-```
+- **20 minutes max** per issue
+- If still stuck → check reference doc `n8n-gotchas.md`
+- If still stuck after 30 min → document and escalate
 
-### Step 3: Check Node Input/Output
+---
 
-```bash
-# Inspect specific node's data
-curl -s "https://automation.dyniq.ai/api/v1/executions/{id}?includeData=true" \
-  -H "X-N8N-API-KEY: $N8N_KEY" | python3 -c "
-import sys, json
-data = json.load(sys.stdin)
-node_data = data['data']['resultData']['runData']['Node Name'][0]['data']['main'][0]
-print(json.dumps(node_data, indent=2))
-"
-```
+## Common Issues & Solutions
 
-## Common n8n Gotchas
+### Issue: Code Node `fetch is not defined`
 
-### Data Flow After HTTP Request
+**Root Cause:** n8n uses custom JS runtime, not Node.js.
 
-After ANY HTTP Request node, `$json` contains the RESPONSE, not the original input.
-
+**Fix:**
 ```javascript
-// WRONG - $json is the HTTP response
-if ($json.decision === 'edit') { ... }
+// WRONG
+const response = await fetch(url, { headers });
 
-// CORRECT - reference upstream node
-if ($('Parse Callback').item.json.decision === 'edit') { ... }
-```
-
-### Node Data Isolation
-
-Nodes can ONLY access data from nodes in their connected upstream path. Parallel branches create data isolation.
-
-### Environment Variables
-
-:::warning
-`{{ $env.VARIABLE }}` is BLOCKED in HTTP Request nodes by default. Use Code nodes with `process.env.VARIABLE` instead.
-:::
-
-### Code Node Runtime
-
-n8n Code nodes use a custom runtime, NOT standard Node.js:
-
-```javascript
-// WRONG - fetch not available
-const response = await fetch(url);
-
-// CORRECT - use built-in helper
+// CORRECT
 const response = await this.helpers.httpRequest({
   method: "GET",
   url: url,
-  headers: { "Authorization": "Bearer token" },
+  headers: { "Authorization": "Bearer " + token }
 });
+```
 
-// Return format
+### Issue: Regex Not Matching
+
+**Root Cause:** Double-escaping from shell → API → n8n.
+
+**Diagnosis:**
+```javascript
+// Test what your regex actually contains
+console.log(/\d+/.toString());  // Should show /\d+/ not /\\d+/
+```
+
+**Fix:**
+```javascript
+// WRONG (double-escaped)
+const pattern = /\\d{1,2}/;
+
+// CORRECT (single escape)
+const pattern = /\d{1,2}/;
+```
+
+**Prevention:** Test regex at regex101.com first.
+
+### Issue: Code Node Returns Nothing
+
+**Root Cause:** Wrong return format.
+
+**Fix:**
+```javascript
+// WRONG
+return { data: "value" };
+
+// CORRECT
 return [{ json: { data: "value" } }];
 ```
 
-## Workflow Modification via API
+### Issue: Webhook Returns 404
 
-### Get Workflow
+**Root Causes:**
+1. Workflow not active
+2. Wrong webhook path
+3. Production vs Test URL
 
+**Diagnosis:**
 ```bash
-curl -s "https://automation.dyniq.ai/api/v1/workflows/{id}" \
-  -H "X-N8N-API-KEY: $N8N_KEY" > workflow.json
+# Check workflow active status
+curl -s "https://automation.dyniq.ai/api/v1/workflows/$WORKFLOW_ID" \
+  -H "X-N8N-API-KEY: $N8N_KEY" | grep '"active"'
 ```
 
-### Update Workflow
-
-Only send: `name`, `nodes`, `connections`, `settings`. Extra fields cause 400 errors.
-
+**Fix:**
 ```bash
-curl -X PUT "https://automation.dyniq.ai/api/v1/workflows/{id}" \
-  -H "X-N8N-API-KEY: $N8N_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"...", "nodes":[...], "connections":{}, "settings":{}}'
-```
-
-### Activate
-
-```bash
-curl -X POST "https://automation.dyniq.ai/api/v1/workflows/{id}/activate" \
+# Activate workflow
+curl -X POST "https://automation.dyniq.ai/api/v1/workflows/$WORKFLOW_ID/activate" \
   -H "X-N8N-API-KEY: $N8N_KEY"
 ```
 
-## Common Errors
+### Issue: Workflow API Update Fails
 
-| Error | Cause | Fix |
-|-------|-------|-----|
-| "No path back to referenced node" | Cross-branch `$('Node')` reference | Reorganize or use Merge node |
-| "22P02 invalid input syntax" | Wrong data type for DB column | Cast data or check column type |
-| "23514 check constraint" | Empty string where not allowed | Use `null` instead of `""` |
-| "401 Unauthorized" | Wrong API key | Verify `X-API-Key` header |
-| "access to env vars denied" | `$env.X` in HTTP Request | Use Code node instead |
+**Root Cause:** Including extra fields like `id`, `active`, `createdAt`.
+
+**Fix:** Only include these 4 fields:
+```json
+{
+  "name": "...",
+  "nodes": [...],
+  "connections": {...},
+  "settings": {}
+}
+```
+
+---
+
+## Debugging Procedure
+
+### Step 1: Get Execution Details
+
+```bash
+EXEC_ID="123"
+curl -s "https://automation.dyniq.ai/api/v1/executions/$EXEC_ID?includeData=true" \
+  -H "X-N8N-API-KEY: $N8N_KEY" | python3 -c "
+import sys, json
+d = json.load(sys.stdin)
+data = d.get('data', {}).get('resultData', {}).get('runData', {})
+for node, runs in data.items():
+    if runs:
+        status = runs[0].get('executionStatus', 'unknown')
+        print(f'{node}: {status}')
+"
+```
+
+### Step 2: Identify Failed Node
+
+Look for `error` status in output above.
+
+### Step 3: Get Node Output
+
+```bash
+curl -s "https://automation.dyniq.ai/api/v1/executions/$EXEC_ID?includeData=true" \
+  -H "X-N8N-API-KEY: $N8N_KEY" | python3 -c "
+import sys, json
+d = json.load(sys.stdin)
+node_data = d.get('data', {}).get('resultData', {}).get('runData', {}).get('YOUR_NODE_NAME', [])
+if node_data:
+    print(json.dumps(node_data[0].get('data', {}), indent=2))
+"
+```
+
+### Step 4: Test Fix Locally
+
+For Code nodes, test your JavaScript logic separately before deploying.
+
+---
+
+## Environment Variables
+
+```bash
+# Store in .env (never commit)
+N8N_API_KEY=your-key
+N8N_WORKFLOW_ID=DP0wfYBh8SJK33Ue
+```
+
+---
+
+## Quick Reference
+
+| Check | Command |
+|-------|---------|
+| Workflow active? | `curl .../workflows/{id}` → `active: true/false` |
+| Recent executions | `curl .../executions?workflowId={id}&limit=5` |
+| Execution details | `curl .../executions/{id}?includeData=true` |
+| Activate workflow | `POST .../workflows/{id}/activate` |
+
+---
+
+## Related Docs
+
+- `n8n-gotchas.md` - Full technical reference
+- `.agents/sops/voiceflow-debugging.md` - Voiceflow issues
+
+---
+
+*Key lesson: Check execution data to see actual node input/output.*
