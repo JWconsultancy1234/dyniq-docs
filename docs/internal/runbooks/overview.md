@@ -15,12 +15,17 @@ Step-by-step guides for common operational tasks.
 This section is for DYNIQ team members only.
 :::
 
+## Available Runbooks
+
+| Runbook | Purpose | Use When |
+|---------|---------|----------|
+| [Incident Response](./incident-response) | Step-by-step incident procedures | Service is down or degraded |
+| [Rollback Procedures](./rollback-procedures) | Revert deployments and recover | Bad deploy needs reverting |
+| [Health Checks](./health-checks) | Monitor all service health | Routine checks or debugging |
+| [On-Call Reference](./on-call-reference) | Quick reference card | Need copy-paste commands fast |
+
 ## Categories
 
-- **Infrastructure** - Server management, Docker operations
-- **Monitoring** - Langfuse traces, Metabase dashboards
-- **Recovery** - Service restart procedures, data recovery
-
-:::info Content Coming Soon
-Runbooks are planned for Sprint 2 migration.
-:::
+- **Infrastructure** - Server management, Docker operations, Caddy routing
+- **Monitoring** - Langfuse traces, Metabase dashboards, health endpoints
+- **Recovery** - Service restart procedures, rollback, data recovery
