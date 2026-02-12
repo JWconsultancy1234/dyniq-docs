@@ -1,21 +1,21 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+          Multi-Agent AI Decision Engine
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">
+          82 C-Suite agents. Bayesian calibration. Board meetings in seconds.
+        </p>
         <div className={styles.buttons}>
           <Link
             className="button button--primary button--lg"
@@ -29,19 +29,53 @@ function HomepageHeader() {
             API Reference
           </Link>
         </div>
+        <div style={{marginTop: '2rem', display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap'}}>
+          <span className={styles.statBadge}>82 Agents</span>
+          <span className={styles.statBadge}>28 Endpoints</span>
+          <span className={styles.statBadge}>5 Tiers</span>
+          <span className={styles.statBadge}>{'<'}30s Decisions</span>
+        </div>
       </div>
     </header>
   );
 }
 
-function FeatureCard({title, description, link}: {title: string; description: string; link: string}) {
+const features = [
+  {
+    title: 'Architecture',
+    emoji: '\u{1F3D7}',
+    description: '82-agent swarm with C-Suite hierarchy, board meetings, and Bayesian calibration.',
+    link: '/docs/developers/architecture/overview',
+  },
+  {
+    title: 'API Reference',
+    emoji: '\u{1F50C}',
+    description: '28 endpoints across board meetings, content, vision, HITL, and more.',
+    link: '/docs/developers/api/overview',
+  },
+  {
+    title: 'Guides',
+    emoji: '\u{1F4D6}',
+    description: 'Step-by-step integration guides for API keys, webhooks, and voice agent setup.',
+    link: '/docs/guides/getting-started',
+  },
+  {
+    title: 'Internal',
+    emoji: '\u{1F512}',
+    description: 'SOPs, runbooks, incident response procedures, and security documentation.',
+    link: '/docs/internal/sops/overview',
+  },
+];
+
+function FeatureCard({title, emoji, description, link}: {title: string; emoji: string; description: string; link: string}) {
   return (
     <div className={clsx('col col--3')}>
       <div className="card padding--lg" style={{height: '100%'}}>
+        <div style={{fontSize: '2rem', marginBottom: '0.5rem'}}>{emoji}</div>
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
         <Link to={link} className="button button--outline button--primary button--sm">
-          Learn more
+          Learn more &rarr;
         </Link>
       </div>
     </div>
@@ -49,7 +83,6 @@ function FeatureCard({title, description, link}: {title: string; description: st
 }
 
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
       title="DYNIQ Documentation"
@@ -58,26 +91,9 @@ export default function Home(): ReactNode {
       <main>
         <section className="container margin-top--xl margin-bottom--xl">
           <div className="row">
-            <FeatureCard
-              title="Architecture"
-              description="82-agent swarm with C-Suite hierarchy, board meetings, and Bayesian calibration."
-              link="/docs/developers/architecture/overview"
-            />
-            <FeatureCard
-              title="API Reference"
-              description="28 endpoints across board meetings, content, vision, HITL, and more."
-              link="/docs/developers/api/overview"
-            />
-            <FeatureCard
-              title="Guides"
-              description="Step-by-step integration guides for API keys, webhooks, and Ruben configuration."
-              link="/docs/guides/getting-started"
-            />
-            <FeatureCard
-              title="Workflows"
-              description="Pre-built n8n automation templates for lead qualification and content pipelines."
-              link="/docs/workflows/n8n-templates/overview"
-            />
+            {features.map((f) => (
+              <FeatureCard key={f.title} {...f} />
+            ))}
           </div>
         </section>
       </main>

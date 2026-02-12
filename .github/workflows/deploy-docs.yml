@@ -23,6 +23,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Fetch latest OpenAPI spec
+        run: |
+          curl -sf https://agents-api.dyniq.ai/openapi.json -o static/openapi.json \
+            || echo "::warning::agents-api unreachable, using cached spec"
+
+      - name: Generate API docs from spec
+        run: npx docusaurus gen-api-docs all
+
       - name: Spell check
         run: npx cspell "docs/**/*.md" --no-progress
 

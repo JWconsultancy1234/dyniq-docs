@@ -1,0 +1,58 @@
+name: Documentation Request
+description: Request new documentation or report an issue with existing docs
+labels: ["Documentation"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Request Type
+      options:
+        - New documentation needed
+        - Existing doc is incorrect
+        - Existing doc is outdated
+        - Existing doc is unclear
+        - Missing code example
+    validations:
+      required: true
+
+  - type: input
+    id: page
+    attributes:
+      label: Related Page (if updating)
+      description: URL or file path of the existing doc
+      placeholder: "https://docs.dyniq.ai/docs/..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What documentation is needed or what's wrong?
+      placeholder: "Describe the doc you need or the issue with the existing doc..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Documentation Section
+      options:
+        - Developers (Architecture, API, Infrastructure)
+        - Guides (How-to, Tutorials)
+        - Internal (SOPs, Runbooks, Security)
+        - Workflows (n8n Templates)
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Low - Nice to have
+        - Medium - Affects daily work
+        - High - Blocking work
+    validations:
+      required: true
