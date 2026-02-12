@@ -1,6 +1,6 @@
 ---
 description: "Setup agents-api environment and verify connectivity"
-argument-hint: [--verify-only]
+argument-hint: "[--verify-only]"
 ---
 
 # Setup Agents API

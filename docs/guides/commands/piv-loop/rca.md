@@ -1,6 +1,6 @@
 ---
 description: Analyze and document root cause for a GitHub issue
-argument-hint: [github-issue-id]
+argument-hint: "[github-issue-id]"
 ---
 
 # Root Cause Analysis: GitHub Issue #$ARGUMENTS

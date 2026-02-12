@@ -1,6 +1,6 @@
 ---
 description: Audit and enhance Linear issue documentation quality across a project
-argument-hint: [project-name or initiative-name]
+argument-hint: "[project-name or initiative-name]"
 ---
 
 # Linear Doc Audit: $ARGUMENTS

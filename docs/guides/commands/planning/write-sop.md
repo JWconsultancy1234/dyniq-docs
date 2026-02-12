@@ -1,6 +1,6 @@
 ---
 description: "Create a delegatable SOP for a recurring task"
-argument-hint: [task-name]
+argument-hint: "[task-name]"
 ---
 
 # Write SOP: $ARGUMENTS

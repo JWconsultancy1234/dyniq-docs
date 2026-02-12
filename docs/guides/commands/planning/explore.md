@@ -1,6 +1,6 @@
 ---
 description: "Exploration mode for discovery and decision-making"
-argument-hint: [topic]
+argument-hint: "[topic]"
 ---
 
 # Explore: $ARGUMENTS

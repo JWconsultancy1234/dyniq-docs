@@ -1,6 +1,6 @@
 ---
 description: Implement fix from RCA document for GitHub issue
-argument-hint: [github-issue-id]
+argument-hint: "[github-issue-id]"
 ---
 
 # Implement Fix: GitHub Issue #$ARGUMENTS

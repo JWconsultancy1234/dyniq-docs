@@ -18,6 +18,9 @@ add_frontmatter() {
   if head -1 "$file" | grep -q "^---"; then
     # Update last_review date in existing frontmatter
     sed -i "s/^last_review:.*/last_review: $DATE/" "$file"
+    # Fix unquoted argument-hint values (YAML interprets [x] as array)
+    sed -i 's/^argument-hint: \([^"]\)/argument-hint: "\1/' "$file"
+    sed -i '/^argument-hint: "/{ /[^"]$/s/$/"/ }' "$file"
     return
   fi
 

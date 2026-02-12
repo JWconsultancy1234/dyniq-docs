@@ -1,6 +1,6 @@
 ---
 description: "Review pull request with automated checks and feedback"
-argument-hint: [pr-number-or-url]
+argument-hint: "[pr-number-or-url]"
 ---
 
 # Review PR: $ARGUMENTS

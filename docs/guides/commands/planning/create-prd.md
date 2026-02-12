@@ -1,6 +1,6 @@
 ---
 description: Create a Product Requirements Document with Freedom Filter alignment
-argument-hint: [feature-name]
+argument-hint: "[feature-name]"
 ---
 
 # Create PRD: Generate Product Requirements Document
