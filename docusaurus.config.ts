@@ -72,7 +72,7 @@ const config: Config = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: 'Next',
+              label: 'v3.1',
               path: '',
             },
           },
@@ -96,7 +96,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/dyniq-social-card.png',
+    image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       defaultMode: 'dark',
       disableSwitch: false,
@@ -186,6 +186,9 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
       additionalLanguages: ['bash', 'python', 'json', 'yaml', 'docker', 'nginx'],
+    },
+    codeBlock: {
+      showCopyButton: true,
     },
     mermaid: {
       theme: {light: 'neutral', dark: 'dark'},

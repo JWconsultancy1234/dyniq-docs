@@ -84,6 +84,23 @@ All endpoints return JSON with consistent error handling:
 | Vision | 10/min |
 | Health | Unlimited |
 
+## Expected Response Times
+
+| Endpoint | Level | Agents | Avg Response | Max |
+|----------|-------|--------|-------------|-----|
+| `GET /health` | - | - | 100ms | 500ms |
+| `POST /board-meeting/analyze` | 0 | 3 | ~25s | 60s |
+| `POST /board-meeting/analyze` | 1 | 8 | ~30s | 60s |
+| `POST /board-meeting/analyze` | 2 | 20-26 | ~59s | 100s |
+| `POST /board-meeting/analyze` | 3+ | 40-82 | ~115s | Async |
+| `POST /style-transfer/analyze` | - | 8 | ~173s | 240s |
+| `POST /vision/ui-to-code` | - | 1 | ~30s | 60s |
+| `POST /content/create` | - | 1-3 | ~15s | 45s |
+
+:::warning Cloudflare Timeout
+Requests proxied through Cloudflare have a **100-second timeout**. Board meeting levels 3+ automatically switch to async mode and return a `thread_id` for polling via `GET /board-meeting/status/{id}`.
+:::
+
 ## CORS
 
 The API allows cross-origin requests from all origins (`*`) for development. Production deployments should restrict this via Caddy proxy rules.

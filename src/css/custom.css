@@ -141,6 +141,24 @@ code {
   border-radius: 8px;
 }
 
+/* Custom admonition: API cost warning */
+.admonition-cost {
+  border-left-color: #F59E0B !important;
+}
+
+.admonition-cost .admonition-heading h5::before {
+  content: '\1F4B0 ';
+}
+
+/* Custom admonition: Security notice */
+.admonition-security {
+  border-left-color: #EF4444 !important;
+}
+
+.admonition-security .admonition-heading h5::before {
+  content: '\1F6E1 ';
+}
+
 /* ============================================
    Links
    ============================================ */
