@@ -17,8 +17,8 @@ const config: Config = {
   organizationName: 'JWconsultancy1234',
   projectName: 'dyniq-docs',
 
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
 
   i18n: {
     defaultLocale: 'en',

@@ -339,8 +339,8 @@ builder.add_conditional_edges(
 
 - [Pydantic AI Docs](https://ai.pydantic.dev/)
 - [LangGraph Docs](https://langchain-ai.github.io/langgraph/)
-- [ARCHITECTURE.md](../docs/ARCHITECTURE-ai-agent-platform.md)
-- [AgentDeps Pattern](../../agents/pydantic_ai/deps.py)
+- [ARCHITECTURE.md](pathname://docs/ARCHITECTURE-ai-agent-platform.md)
+- [AgentDeps Pattern](pathname://agents/pydantic_ai/deps.py)
 
 ---
 

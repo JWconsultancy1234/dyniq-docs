@@ -101,9 +101,17 @@ sync_reference() {
     local basename
     basename=$(basename "$file")
 
-    # Skip files that are too repo-specific
+    # Skip files that are too repo-specific or internal-only
     case "$basename" in
       infinite-loop-patterns.md|technical-patterns.md) continue ;;
+      freedom-system.md|daily-plan-phases.md|timeblock-phases.md) continue ;;
+      end-timeblock-automation.md|end-timeblock-templates.md) continue ;;
+      executive-assistant-workflows.md|force-multiplier-examples.md) continue ;;
+      epic-completion-checklist.md|operations-templates.md) continue ;;
+      business-case-template.md|business-case-templates.md) continue ;;
+      proposal-templates.md|sales-frameworks.md) continue ;;
+      client-onboard-checklist.md|brand-audit-checklist.md) continue ;;
+      brand-variables.md|content-creation.md|optimization-analytics.md) continue ;;
     esac
 
     local title

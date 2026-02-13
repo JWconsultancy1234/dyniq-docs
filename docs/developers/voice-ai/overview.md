@@ -293,8 +293,8 @@ pytest tests/benchmark/ --benchmark-only
 
 | Doc | Description |
 |-----|-------------|
-| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | C4 diagrams, data flow, component overview |
-| [QUICKSTART.md](docs/QUICKSTART.md) | 5-minute developer onboarding |
+| [ARCHITECTURE.md](pathname://docs/ARCHITECTURE.md) | C4 diagrams, data flow, component overview |
+| [QUICKSTART.md](./QUICKSTART) | 5-minute developer onboarding |
 
 ## Related Repos
 
