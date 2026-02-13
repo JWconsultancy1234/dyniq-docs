@@ -2,7 +2,7 @@
 title: "DYNIQ Deployment Guide"
 sidebar_label: "DYNIQ Deployment Guide"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [reference, auto-synced]
 ---
@@ -42,6 +42,10 @@ curl https://ruben-api.dyniq.ai/health
 ssh contabo "cd /opt/dyniq-voice && git pull && cd docker && docker compose build agents-api && docker compose up -d agents-api"
 curl https://agents-api.dyniq.ai/health
 
+# Deploy docs site changes
+ssh contabo "cd /opt/dyniq-docs && git pull && cd /opt/dyniq-voice/docker && docker compose build docs && docker compose up -d docs --force-recreate"
+curl -s -o /dev/null -w "%{http_code}" https://docs.dyniq.ai/  # Expect 401 (auth active)
+
 # Env file change only (no code change)
 docker compose up -d --force-recreate ruben ruben-api
 
@@ -52,6 +56,44 @@ ssh contabo "cd /opt/dyniq-voice/docker && docker compose down && docker compose
 docker network connect n8n_default docker-caddy-1
 docker network connect nocodb_default docker-caddy-1
 docker restart docker-caddy-1
+```
+
+---
+
+## Caddy Basic Auth Setup
+
+**For adding password protection to any Caddy-proxied service:**
+
+```bash
+# 1. Generate bcrypt hash ON THE SERVER
+ssh contabo
+docker exec docker-caddy-1 caddy hash-password --plaintext 'YourPassword'
+# Save output to /tmp/hash.txt to avoid shell escaping issues
+
+# 2. Add to .env with $$ escaping (Docker Compose interprets $ as variable)
+echo 'SERVICE_AUTH_USER=username' >> /opt/dyniq-voice/.env
+printf 'SERVICE_AUTH_HASH=' >> /opt/dyniq-voice/.env
+# Replace every $ with $$ in the hash before adding:
+sed 's/\$/\$\$/g' /tmp/hash.txt >> /opt/dyniq-voice/.env
+
+# 3. Add env_file to Caddy service in docker-compose.yml (if not already there)
+# caddy:
+#   env_file:
+#     - ../.env
+
+# 4. Add basicauth block to Caddyfile
+# service.dyniq.ai {
+#     basicauth * {
+#         {$SERVICE_AUTH_USER} {$SERVICE_AUTH_HASH}
+#     }
+#     reverse_proxy service:port { ... }
+# }
+
+# 5. Recreate Caddy
+docker compose up -d caddy --force-recreate
+
+# 6. Verify
+curl -s -o /dev/null -w "%{http_code}" https://service.dyniq.ai/  # Expect 401
 ```
 
 ---

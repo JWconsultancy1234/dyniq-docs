@@ -2,7 +2,7 @@
 title: "Deploy Ruben to Production"
 sidebar_label: "Deploy Ruben to Production"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [commands, auto-synced]
 ---
@@ -15,20 +15,49 @@ Full deployment workflow with validation and rollback.
 
 - [ ] Local test passed (`/test-ruben-local`)
 - [ ] `.env.production` updated if config changed
-- [ ] Git changes committed (optional but recommended)
+- [ ] Git changes committed and pushed to origin
+- [ ] Server state is clean (see step below)
+
+### Server State Check (MANDATORY - 7x hotfix pattern)
+
+**Before ANY deploy, verify server matches remote:**
+
+```bash
+# 0. Verify server branch (NEW - 7x pattern: branch drift)
+ssh contabo "cd /opt/dyniq-voice && git branch --show-current"
+# Expected: develop (if main → switch: git checkout develop && git pull origin develop)
+
+# 1. Check for uncommitted server changes
+ssh contabo "cd /opt/dyniq-voice && git status --short"
+
+# 2. Verify server matches origin
+ssh contabo "cd /opt/dyniq-voice && git log --oneline -1 && echo '---' && git log --oneline origin/develop -1"
+```
+
+| Server Status | Action |
+|---------------|--------|
+| Wrong branch (e.g. main) | `ssh contabo "cd /opt/dyniq-voice && git checkout develop && git pull origin develop"` |
+| Clean, matches origin | Proceed with deploy |
+| Dirty (modified files) | `ssh contabo "cd /opt/dyniq-voice && git stash && git pull origin develop"` |
+| Divergent branches | `ssh contabo "cd /opt/dyniq-voice && git stash && git reset --hard origin/develop"` |
+
+**NEVER fix code directly on server.** Always: local edit → commit → push → pull on server → rebuild.
+
+**Incident history (7x):** STORY-06, STORY-09, langfuse-io, self-correcting, voice-wave1 (2x), voice-wave2 (branch drift to main). Each required manual cleanup.
 
 ## Deploy
 
 ```bash
 cd /Users/walker/Desktop/Code/dyniq-ai-agents
-./deploy.sh
+
+# 1. Ensure changes are pushed
+git push origin develop
+
+# 2. Pull on server + rebuild
+ssh contabo "cd /opt/dyniq-voice && git pull origin develop && cd docker && docker compose build ruben ruben-api && docker compose up -d ruben ruben-api --force-recreate"
 ```
 
-This will:
-1. Copy `.env.production` to `.env`
-2. Rsync files to Contabo (`83.171.248.35:/opt/dyniq-voice/`)
-3. Rebuild and restart Docker containers
-4. Show last 20 lines of Ruben logs
+**Note:** `ruben` and `ruben-api` are baked images. `restart` alone does NOT pick up code changes — must `build` + `force-recreate`.
 
 ## Post-Deploy Verification
 

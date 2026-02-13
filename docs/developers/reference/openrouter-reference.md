@@ -2,7 +2,7 @@
 title: "OpenRouter Reference"
 sidebar_label: "OpenRouter Reference"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [reference, auto-synced]
 ---
@@ -106,7 +106,7 @@ img_bytes = base64.b64decode(b64)
 |----|-------|
 | "pure near-black background" | "#0A0A0F background" |
 | "NOT navy blue, NOT dark blue" | (omit negative prompts) |
-| "cyan #00D4FF accents" | "use these exact colors" |
+| "emerald #10B981 accents" | "use these exact colors" |
 
 **Cost:** ~$0.14/image at 1080x1080. Total for 5-slide carousel (cover + CTA with 3 iterations): ~$0.56
 

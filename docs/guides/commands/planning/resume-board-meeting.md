@@ -1,6 +1,6 @@
 ---
 description: "Resume a timed-out board meeting using thread ID"
-argument-hint: <thread_id>
+argument-hint: "<thread_id>"
 ---
 
 # Resume Board Meeting

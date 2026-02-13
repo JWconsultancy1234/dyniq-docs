@@ -26,6 +26,7 @@ curl -s https://agents-api.dyniq.ai/health && echo "✅ agents-api"
 curl -s https://ruben-api.dyniq.ai/health && echo "✅ ruben-api"
 curl -s https://automation.dyniq.ai/healthz && echo "✅ n8n"
 curl -s https://langfuse.dyniq.ai/api/public/health && echo "✅ langfuse"
+curl -s -o /dev/null -w "%{http_code}" https://docs.dyniq.ai/ | grep -q 401 && echo "✅ docs (auth active)"
 ```
 
 ---
@@ -109,6 +110,8 @@ curl -s https://langfuse.dyniq.ai/api/public/health
 | ruben-api 502 | Container down | `ssh contabo "cd /opt/dyniq-voice/docker && docker compose up -d ruben-api"` |
 | n8n 502 | Container down | `ssh contabo "cd /opt/n8n && docker compose up -d"` |
 | langfuse 525 | SSL error | Check Caddy routes, reconnect networks |
+| docs 502 | Container down | `ssh contabo "cd /opt/dyniq-voice/docker && docker compose up -d docs"` |
+| docs no auth | Missing env vars | Check `DOCS_AUTH_USER`/`DOCS_AUTH_HASH` in `.env` |
 
 ---
 
@@ -132,6 +135,7 @@ This command is called automatically by:
 | ruben-api | ✅ | 85ms |
 | n8n | ✅ | 200ms |
 | langfuse | ✅ | 150ms |
+| docs | ✅ (401=auth active) | 50ms |
 
 **Ready for:** /full-planning-cycle, /board-meeting
 ```

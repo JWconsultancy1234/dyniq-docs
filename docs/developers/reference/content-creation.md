@@ -2,7 +2,7 @@
 title: "Content Creation Reference"
 sidebar_label: "Content Creation Reference"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [reference, auto-synced]
 ---
@@ -144,7 +144,8 @@ Before planning, identify task type:
 | Type | Planning Requirements | Iteration Budget |
 |------|----------------------|------------------|
 | Code | Standard PRD, validation, testing | 1-3 iterations |
-| Content | Brand voice, platform limits, visual format | 10-15 iterations |
+| Content (text/visual) | Brand voice, platform limits, visual format | 10-15 iterations |
+| Content (audio) | Voice IDs, accent guidance, script per speaker | 3-5 iterations |
 | Infrastructure | Rollback plan, health checks, monitoring | 1-2 iterations |
 
 ### Content-Specific Planning Additions
@@ -205,6 +206,27 @@ For content tasks, always specify:
 7. Iterate based on feedback (~3 rounds typical)
 
 **Reference slides:** `.agents/content/linkedin/slides/E3-006-slide*.html`
+
+### OG Image / Banner via HTML + Playwright ($0 Pipeline)
+
+Proven pipeline for social sharing images without image gen API costs:
+
+1. Create HTML template with fixed dimensions (OG: 1200x630, LinkedIn banner: 1584x396)
+2. Use CSS for layout: blurred bg image, glass morphism, Inter font via Google Fonts
+3. Render with Playwright CLI:
+
+```bash
+npx playwright screenshot \
+  --viewport-size="1200,630" \
+  --wait-for-timeout=3000 \
+  --full-page \
+  "file:///path/to/og-template.html" \
+  output/og-image.png
+```
+
+**Limitations:** `--device-scale-factor` flag doesn't exist in CLI. Standard viewport is sufficient for OG/banner.
+
+**Reference templates:** `dyniq-app/apps/landing/public/images/ruben-gen/og-template.html` (OG) and `linkedin-banner-template.html` (banner).
 
 ### Screenshot Guidelines
 

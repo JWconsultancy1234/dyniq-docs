@@ -106,6 +106,8 @@ For each result, answer: Does this affect Path A (BolScout) or Path B (DYNIQ €
 ```bash
 # Pipeline health
 curl -s "https://agents-api.dyniq.ai/health" -H "X-API-Key: $AGENTS_API_KEY"
+# Docs site (expect 401 = auth active)
+curl -s -o /dev/null -w "%{http_code}" https://docs.dyniq.ai/
 ```
 
 **Output format in context briefing:**
@@ -116,7 +118,7 @@ INTELLIGENCE HIGHLIGHTS (live search)
 |---|--------|----------|--------|
 | 1 | [finding] | [business impact] | [what to do] |
 
-Internal: Pipeline ✅ | Agents API: healthy
+Internal: Pipeline ✅ | Agents API: healthy | Docs: 401 (auth active)
 ```
 
 **Why inline:** Uses Claude subscription (€0 cost), Opus-quality analysis, fresh results at block start, zero infrastructure.

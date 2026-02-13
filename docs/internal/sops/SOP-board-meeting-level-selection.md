@@ -2,7 +2,7 @@
 title: "SOP: Board Meeting Level Selection"
 sidebar_label: "SOP: Board Meeting Level Selection"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [sops, auto-synced]
 ---

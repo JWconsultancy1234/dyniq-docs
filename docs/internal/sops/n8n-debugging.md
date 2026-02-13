@@ -2,7 +2,7 @@
 title: "SOP: n8n Workflow Debugging"
 sidebar_label: "SOP: n8n Workflow Debugging"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [sops, auto-synced]
 ---

@@ -2,7 +2,7 @@
 title: "Pre-Implementation Checklist"
 sidebar_label: "Pre-Implementation Checklist"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [reference, auto-synced]
 ---
@@ -58,6 +58,61 @@ ORDER BY ordinal_position;
 | `embedding` | vector(1536) | Wrong dimension count |
 
 **Incident (2026-02-02):** `universal_embeddings.source_id` is UUID type, but code passed string thread_id. Fixed with UUID5 deterministic conversion.
+
+### Column Existence Check via REST API (NEW - 2026-02-12)
+
+**Before running ALTER TABLE, check if column already exists:**
+
+```bash
+# Returns 200 with data if column exists, 400 with error if not
+curl -s "${SUPABASE_URL}/rest/v1/leads?select=column_name&limit=1" \
+  -H "apikey: ${SUPABASE_KEY}"
+```
+
+**Faster than DDL and works without direct DB access.** Use when Supabase CLI is not authenticated or DB password unavailable.
+
+**Incident (2026-02-12):** DYN-200 planned ALTER TABLE for `key_moments` column, but REST API check showed it already existed. Saved migration time.
+
+### CHECK Constraint Verification (NEW - 2026-02-12)
+
+**Before writing new enum values to existing columns:**
+
+```bash
+# Check CHECK constraint on column
+curl -s "${DYNIQ_SUPABASE_URL}/rest/v1/leads?select=call_outcome&call_outcome=not.is.null&limit=10" \
+  -H "apikey: ${DYNIQ_SUPABASE_KEY}"
+```
+
+| Column | Constraint | Common Mistake |
+|--------|-----------|----------------|
+| `call_outcome` | `leads_call_outcome_check` (8 values) | Adding new enum values not in constraint |
+| `urgency` | CHECK (valid enum) | Passing empty string instead of null |
+
+**Incident (2026-02-12):** `_classify_call_outcome()` returned `"engaged"` but `leads_call_outcome_check` only allows 8 specific values. Runtime error on Supabase INSERT. Fixed with OUTCOME_DB_MAP.
+
+### PyPI Version Verification (NEW - 2026-02-12)
+
+**Before pinning dependency versions in requirements.txt:**
+
+```bash
+pip index versions livekit-plugins-noise-cancellation 2>/dev/null || \
+  pip install livekit-plugins-noise-cancellation== 2>&1 | grep "from versions"
+```
+
+**Incident (2026-02-12):** Plan specified `>=1.0` but package maxes at `0.2.5`. Docker build failed.
+
+### LiveKit Plugin Param Verification (NEW - 2026-02-12)
+
+**LiveKit plugins wrap raw provider APIs with different param names:**
+
+| Raw API Param | LiveKit Plugin Param | Plugin |
+|---------------|---------------------|--------|
+| `endpointing` | `endpointing_ms` | deepgram |
+| `interim_results` | Default `True` (omit) | deepgram |
+
+**Always check plugin source, not raw provider docs.**
+
+**Incident (2026-02-12):** `endpointing=500` crashed with `TypeError: unexpected keyword argument`. Correct: `endpointing_ms=500`.
 
 ### Function Signature Verification (NEW - 2026-02-05)
 
@@ -120,6 +175,21 @@ grep -r "export const" src/components/*.tsx | head -10
 # Check recent commits
 git log --oneline -10 | grep -i "[feature-keyword]"
 ```
+
+### Migration Target Path Check (NEW - 2026-02-12)
+
+**Before writing migrated content to target paths, verify targets don't already exist:**
+
+```bash
+# Check ALL planned target paths exist or not
+for f in docs/path/file1.md docs/path/file2.md; do
+  [ -f "$f" ] && echo "EXISTS: $f" || echo "NEW: $f"
+done
+```
+
+**If file EXISTS:** Read it first, then decide: skip (content already good), extend, or replace.
+
+**Incident (2026-02-12):** brand-voice.md Write failed because file already existed from Sprint 1/2. Caused 3 sibling parallel writes to also fail. 3rd occurrence of Write-before-Read pattern.
 
 ---
 

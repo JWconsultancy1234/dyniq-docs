@@ -2,7 +2,7 @@
 title: "/n8n-update - Structured n8n Workflow Modification"
 sidebar_label: "/n8n-update - Structured n8n Workflow Modification"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [commands, auto-synced]
 ---
