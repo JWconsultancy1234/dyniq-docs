@@ -63,6 +63,26 @@ Before specifying file locations in plans:
 
 **Incident log (3x):** n8n flagged as manual (2026-02-02, 02-07, 02-09), Metabase flagged as manual (2026-02-08, 02-09). User corrected every time.
 
+### Verify Assumptions Gate (Voice Pipeline Wave 1 Pattern - 3 hotfixes/5 commits)
+
+**Before finalizing any plan that involves external dependencies:**
+
+| Assumption Type | Verification | Tool |
+|----------------|--------------|------|
+| Package version | `pip show pkg` or PyPI check | Terminal |
+| Plugin wrapper params | Read plugin source, not raw API docs | Grep/Read |
+| DB column constraints | `curl Supabase REST ?select=col&limit=1` | Terminal |
+| Existing columns/tables | Supabase REST API check | Terminal |
+
+**Why:** Wave 1 had 3/5 commits as hotfixes (NC version wrong, Deepgram param wrong, CHECK constraint missed). All were assumption failures catchable in 5 min.
+
+**Add to Level 1+ plans:**
+```markdown
+### Assumptions to Verify Before Execute
+| # | Assumption | Verification Command | Verified? |
+|---|-----------|---------------------|-----------|
+```
+
 ### LangGraph State Schema Check (SAC-025 Pattern)
 
 **When adding new LangGraph nodes that return new state keys:**

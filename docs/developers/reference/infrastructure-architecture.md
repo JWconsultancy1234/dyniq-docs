@@ -2,7 +2,7 @@
 title: "DYNIQ Infrastructure Architecture"
 sidebar_label: "DYNIQ Infrastructure Architecture"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [reference, auto-synced]
 ---
@@ -22,6 +22,7 @@ Production infrastructure for all DYNIQ services on Contabo VPS.
 | crm.dyniq.ai | NocoDB | 8080 | nocodb_default |
 | langfuse.dyniq.ai | Langfuse | 3100 | langfuse_default |
 | analytics.dyniq.ai | Metabase | 3001 | metabase_metabase-net |
+| docs.dyniq.ai | Docusaurus (nginx) | 80 | voice-net |
 
 ### API Endpoint Clarification (CRITICAL)
 

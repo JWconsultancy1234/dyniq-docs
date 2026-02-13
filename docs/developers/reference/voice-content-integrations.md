@@ -2,7 +2,7 @@
 title: "Voice & Content Integration Reference"
 sidebar_label: "Voice & Content Integration Reference"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [reference, auto-synced]
 ---
@@ -78,6 +78,21 @@ def on_state(ev):                 # sync = WORKS
 
 **Incident (2026-02-07):** Ruben was silent on all calls because `.on("user_state_changed")` and `.on("agent_state_changed")` were `async def`. Changed to `def` and calls worked immediately.
 
+### LiveKit Plugin Gotchas
+
+**LiveKit plugins wrap raw provider APIs with different param names.**
+
+| Raw API Param | LiveKit Plugin Param | Plugin | Notes |
+|---------------|---------------------|--------|-------|
+| `endpointing` | `endpointing_ms` | deepgram | TypeError if wrong name |
+| `interim_results` | Default `True` (omit) | deepgram | Redundant to specify |
+| `>=1.0` version | Latest is `0.2.5` | noise-cancellation | Check PyPI before pinning |
+
+**Always check plugin source, not raw provider docs.**
+
+**Incident (2026-02-12):** `endpointing=500` crashed with `TypeError: unexpected keyword argument`. Correct: `endpointing_ms=500`.
+**Incident (2026-02-12):** Plan specified NC `>=1.0` but package maxes at `0.2.5`. Docker build failed.
+
 ### Health Checks
 
 ```bash
@@ -87,6 +102,79 @@ curl https://ruben-api.dyniq.ai/health
 # Agent registered (check logs)
 docker compose logs ruben --tail=20 | grep "registered worker"
 ```
+
+---
+
+## ElevenLabs Text to Dialogue (Demo Audio)
+
+| Property | Value |
+|----------|-------|
+| Endpoint | `POST https://api.elevenlabs.io/v1/text-to-dialogue` |
+| Model | `eleven_v3` |
+| API Key | `dyniq-ai-agents/.env` → `ELEVENLAB_API_KEY` |
+| Pricing | ~€0.05/generation |
+
+### Voice Library
+
+| Voice | ID | Accent | Role |
+|-------|-----|--------|------|
+| Eric Pro | `DUhjXXCXHQWckglMUnOv` | Standard Dutch | Ruben (AI agent) |
+| Petra Vlaams | `ANHrhmaFeVN0QJaa0PhL` | Flemish | Lead/client |
+| Ruth | `YUdpWWny7k5yb4QCeweX` | Standard Dutch | Alternative female |
+
+**WARNING:** Basic "Eric" (`cjVigY5qzO86Huf0OWal`) is English/American — NOT Dutch. Always use "Eric Pro".
+
+### Audio Tags (v3 model)
+
+| Tag | Effect |
+|-----|--------|
+| `[laughing]` | Natural laugh |
+| `[sighs]` | Sigh/exhale |
+| `[excited]` | Energetic delivery |
+
+### CRITICAL: Script Language Influences Voice Accent
+
+ElevenLabs v3 output is influenced by BOTH the voice profile AND the script text. Writing Flemish words ("ge", "da", "hé") in a Standard Dutch voice's script makes it sound Flemish.
+
+**Rule:** Keep Ruben's script in clean Standard Dutch ("u", "dat", "heeft u"). Keep client's script in Flemish ("da", "merci hé", "euh"). This contrast (Standard Dutch AI + Flemish client) is authentic and builds trust.
+
+### Usage Pattern
+
+```bash
+# Write JSON to temp file (inline curl fails >1350 bytes)
+cat > /tmp/dialogue.json << 'EOF'
+{
+  "model_id": "eleven_v3",
+  "language_code": "nl",
+  "inputs": [
+    {"text": "Standard Dutch text for Ruben", "voice_id": "DUhjXXCXHQWckglMUnOv"},
+    {"text": "Flemish text voor de klant", "voice_id": "ANHrhmaFeVN0QJaa0PhL"}
+  ]
+}
+EOF
+
+curl -X POST "https://api.elevenlabs.io/v1/text-to-dialogue" \
+  -H "xi-api-key: $ELEVENLAB_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d @/tmp/dialogue.json --output output.mp3
+```
+
+### Adding Shared Voices to Account
+
+```bash
+# 1. Find voice in shared library
+curl -s "https://api.elevenlabs.io/v1/shared-voices?search=Petra+Vlaams&language=nl" \
+  -H "xi-api-key: $KEY" | jq '.voices[0] | {voice_id, public_owner_id}'
+
+# 2. Add to account
+curl -X POST "https://api.elevenlabs.io/v1/voices/add/{public_user_id}/{voice_id}" \
+  -H "xi-api-key: $KEY" -H "Content-Type: application/json" \
+  -d '{"new_name": "Petra Vlaams"}'
+```
+
+### Flemish Accent = Trust Signal (Belgian B2B)
+
+Kantar Belgium 2026 research confirms Flemish accent builds trust with Belgian ICP. The Standard Dutch AI + Flemish client contrast in demo audio signals: "Ruben understands local business."
 
 ---
 
@@ -116,31 +204,54 @@ docker compose logs ruben --tail=20 | grep "registered worker"
 
 ---
 
-## Video Generation (WaveSpeedAI)
+## Video Generation
+
+### fal.ai (Kling 3.0 Pro) — Preferred for Image-to-Video
+
+| Property | Value |
+|----------|-------|
+| URL | https://fal.ai |
+| SDK | `pip install fal-client` (Python) |
+| Model | `fal-ai/kling-video/v1.6/pro/image-to-video` |
+| Pricing | ~$2.24/10s video |
+
+**CRITICAL:** Use Python SDK, NOT REST API. REST status endpoint returns `405 Method Not Allowed`.
+
+```python
+import fal_client
+
+result = fal_client.subscribe("fal-ai/kling-video/v1.6/pro/image-to-video", arguments={
+    "prompt": "Description of motion",
+    "image_url": "https://...",
+    "duration": "10",
+    "aspect_ratio": "1:1"
+})
+video_url = result["video"]["url"]
+```
+
+**Post-processing with ffmpeg:**
+```bash
+# Crop to 16:9 + compress
+ffmpeg -i raw.mp4 -vf "crop=680:384:(iw-680)/2:(ih-384)/2" -c:v libvpx-vp9 -b:v 500k out.webm
+ffmpeg -i raw.mp4 -vf "crop=680:384:(iw-680)/2:(ih-384)/2" -c:v libx264 -crf 28 -preset slow out.mp4
+```
+
+**Incident (2026-02-12):** Background polling script ran 10 min on REST 405 before timeout. Python SDK works immediately.
+
+### WaveSpeedAI (Alternative)
 
 | Property | Value |
 |----------|-------|
 | URL | https://wavespeed.ai |
 | Models | Kling, Runway Gen-3, Hailuo, Pika |
-| Pricing | €0.02-0.12/second depending on model |
-| Alternative | DiffusionRouter (diffusionrouter.ai) |
-
-### Model Recommendations
+| Pricing | $0.02-0.12/second depending on model |
 
 | Use Case | Model | Duration | Cost |
 |----------|-------|----------|------|
-| Fast iteration | Hailuo | 6s | €0.02-0.05/video |
-| High quality | Kling | 5-10s | €0.05-0.10/sec |
-| Professional/4K | Runway Gen-3 | 10-30s | €0.05-0.12/sec |
-| Quick prototypes | Pika | 3-5s | €0.03/gen |
-
-### Usage Pattern
-
-Video generation is async - use webhook callbacks:
-1. Submit generation request
-2. Receive job ID
-3. Webhook fires on completion
-4. Download video from provided URL
+| Fast iteration | Hailuo | 6s | $0.02-0.05/video |
+| High quality | Kling | 5-10s | $0.05-0.10/sec |
+| Professional/4K | Runway Gen-3 | 10-30s | $0.05-0.12/sec |
+| Quick prototypes | Pika | 3-5s | $0.03/gen |
 
 ---
 
@@ -192,4 +303,4 @@ DO UPDATE SET likes = EXCLUDED.likes, comments = EXCLUDED.comments,
 
 ---
 
-*Last updated: 2026-02-06*
+*Last updated: 2026-02-12 (added ElevenLabs Text to Dialogue, voice IDs, accent discovery)*

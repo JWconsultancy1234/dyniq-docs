@@ -2,7 +2,7 @@
 title: "Walker-OS Unified System Architecture"
 sidebar_label: "Walker-OS Unified System Architecture"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [reference, auto-synced]
 ---

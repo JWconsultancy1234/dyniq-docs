@@ -2,7 +2,7 @@
 title: "SOP: Creating a Pydantic AI Agent"
 sidebar_label: "SOP: Creating a Pydantic AI Agent"
 owner: walker
-last_review: 2026-02-12
+last_review: 2026-02-13
 classification: internal
 tags: [sops, auto-synced]
 ---
