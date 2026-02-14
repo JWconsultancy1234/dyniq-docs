@@ -162,7 +162,17 @@
     "checkpointer",
     "Checkpointer",
     "langgraph",
-    "timestamptz"
+    "timestamptz",
+    "restic",
+    "Restic",
+    "RESTIC",
+    "rclone",
+    "Bitwarden",
+    "Backblaze",
+    "Healthchecks",
+    "pgpass",
+    "journalctl",
+    "listremotes"
   ],
   "ignorePaths": [
     "node_modules",
