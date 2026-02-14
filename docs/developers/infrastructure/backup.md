@@ -75,8 +75,8 @@ flowchart TD
 
 | Project | Host | Size |
 |---------|------|------|
-| Walker-OS Supabase | db.uzvknwwrfknsqqacbogn.supabase.co | ~912K |
-| DYNIQ Supabase | db.ahseakobsxrtzkikbtxi.supabase.co | ~6.2M |
+| Walker-OS Supabase | See `/root/.pgpass-supabase` on VPS | ~912K |
+| DYNIQ Supabase | See `/root/.pgpass-supabase` on VPS | ~6.2M |
 
 Supabase dumps land in `/backup/supabase/` and get included in the next daily restic backup.
 
